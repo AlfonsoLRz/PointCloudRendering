@@ -1,3 +1,12 @@
+# Visual Studio
+*.db
+
+# Assets
+*.bin
+*.obj
+*.ply
+*.xyz
+
 # Prerequisites
 *.d
 
@@ -5,7 +14,7 @@
 *.slo
 *.lo
 *.o
-*.obj
+*.ipch
 
 # Precompiled Headers
 *.gch
@@ -26,7 +35,15 @@
 *.a
 *.lib
 
+# Python
+__pycache__/
+.idea/
+
 # Executables
 *.exe
 *.out
 *.app
+
+# Images
+*.TIF
+*.JPG

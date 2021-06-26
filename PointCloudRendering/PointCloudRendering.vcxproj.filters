@@ -1,0 +1,1127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Geometry">
+      <UniqueIdentifier>{59897869-6a03-4f03-aec8-a078273c43a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics">
+      <UniqueIdentifier>{d6cf1476-d18e-4fb4-ae2b-95f28dc4ad1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\PrecompiledHeaders">
+      <UniqueIdentifier>{eb795db8-8a74-465b-8205-ef4cb91d9d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Utilities">
+      <UniqueIdentifier>{d629f11b-194f-40cb-b04c-1d9f5fcd87f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Interface">
+      <UniqueIdentifier>{960f8e0c-bd63-45a3-81a1-b08c42effd1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Application">
+      <UniqueIdentifier>{ed94c982-e611-43ec-ac44-0d6fa1d3eddd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core">
+      <UniqueIdentifier>{2be818a5-293b-40a7-850e-ea1567b8678f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\FBO">
+      <UniqueIdentifier>{c2a086f1-71dc-4161-ac31-cce92d6b688c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Shader">
+      <UniqueIdentifier>{6ade8bf9-61ae-427a-8f44-ef5120f70749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Strategy Pattern">
+      <UniqueIdentifier>{e0f86371-9e02-4add-8d17-aaa773055e25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Strategy Pattern\Camera">
+      <UniqueIdentifier>{8279125f-20a9-4ffb-b19b-20c13984230d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Strategy Pattern\Light">
+      <UniqueIdentifier>{246e6d01-21ff-4538-9d65-5db69a1ab24b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Strategy Pattern\Attenuation">
+      <UniqueIdentifier>{e3728c6c-dba0-4ee4-92df-b90d27672c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Geometry">
+      <UniqueIdentifier>{422fae97-2e37-4269-8476-b1cd4c920a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics">
+      <UniqueIdentifier>{ea54f822-853c-433d-ae3a-73a52c652e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Interface">
+      <UniqueIdentifier>{ee08e77e-a6a5-4911-9c57-6e3020d089f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Utilities">
+      <UniqueIdentifier>{a43e51ec-1d0c-4375-9b74-678c8a6fdcfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Geometry\2D">
+      <UniqueIdentifier>{f7531b27-65cc-44e5-b171-78c8fa5d4d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Geometry\3D">
+      <UniqueIdentifier>{468f40d8-5465-44ec-82a1-a852237a068f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Geometry\2D">
+      <UniqueIdentifier>{f789f1f6-5eda-468b-accf-f3485d5d07ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Geometry\3D">
+      <UniqueIdentifier>{729e5216-2428-4f8c-9b46-36f797eafb8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core">
+      <UniqueIdentifier>{588f88ff-6595-4ed5-9fb7-aeca0ccff21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Application">
+      <UniqueIdentifier>{e10b8cea-f35a-4dac-84b6-cce9b5793ab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Shader">
+      <UniqueIdentifier>{7f8b88fe-07de-497d-82f3-8c66bc50547a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\FBO">
+      <UniqueIdentifier>{1b0ee819-b330-457b-9e04-a869578872bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Strategy Pattern">
+      <UniqueIdentifier>{52cb740b-5b55-48c8-845f-9f49f4e3d12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Strategy Pattern\Attenuation">
+      <UniqueIdentifier>{aa8bc39b-9d1e-41d8-9b72-cfea4f33352e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Strategy Pattern\Camera">
+      <UniqueIdentifier>{528c9896-381b-4351-ae6c-9eea94520a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Strategy Pattern\Light">
+      <UniqueIdentifier>{96d8271c-fb61-45e6-97ed-6ecbe916edc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Geometry\General">
+      <UniqueIdentifier>{f94e7238-6b08-464a-bd89-293329eccd0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Geometry\General">
+      <UniqueIdentifier>{806738d8-3caa-4cb6-b910-26cfc9287a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Image">
+      <UniqueIdentifier>{33355e8a-df85-4278-9f5a-418532ca2657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Image">
+      <UniqueIdentifier>{89884a33-2fa9-4362-99e8-10b2505a1015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Noise">
+      <UniqueIdentifier>{b9f40cd7-1e1e-476d-acc0-a2a0d213b4fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Noise\Library">
+      <UniqueIdentifier>{ad0529e1-e42e-4cc5-a932-de9474dfd91d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Image\Library">
+      <UniqueIdentifier>{d103c7a5-0792-4df0-968e-70ab15b3325e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Image\Library">
+      <UniqueIdentifier>{2e2e6c73-b1a2-4aca-9dbc-c5c325b3c69f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders">
+      <UniqueIdentifier>{c6d26eee-5873-4a69-9b4f-1b04cb44f667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Filters">
+      <UniqueIdentifier>{8a0d0b70-5351-4823-bd85-eb8f925a58bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\DataStructures">
+      <UniqueIdentifier>{b7fa444f-3a50-4977-ac58-a10de8e66bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\DataStructures">
+      <UniqueIdentifier>{d6ba4dae-50ca-4767-a096-c6e56af2bb1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Triangles">
+      <UniqueIdentifier>{3db74816-13fa-4fb8-9bac-51d0ca89b18e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Points">
+      <UniqueIdentifier>{748fdd9c-e056-4d13-bd19-247d8fb1c075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute">
+      <UniqueIdentifier>{429f03e7-9dea-49bf-b6ad-7aad17601467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Core\Geometry">
+      <UniqueIdentifier>{2618fc77-7b32-4695-a0f6-ebb97bf156a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Graphics\Core\Geometry">
+      <UniqueIdentifier>{6720e3e6-727b-4087-b5a2-55b4a9305939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Model">
+      <UniqueIdentifier>{ed1e48b7-baad-461f-979c-d202c2edb510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Group">
+      <UniqueIdentifier>{5d8d3464-bba9-464c-9890-5f35ae4b7b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Templates">
+      <UniqueIdentifier>{41902a6e-38b8-4a82-acf3-0f2b6a0ae3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Generic">
+      <UniqueIdentifier>{cacddd2c-b2ba-4cc3-9bfc-9c30ce0f8812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Geometry\Animation">
+      <UniqueIdentifier>{3c96b340-4919-4ca5-8e99-664d3f07eaad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Geometry\Animation">
+      <UniqueIdentifier>{2dd8d719-1047-448c-a1e0-f8f4f1768836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries">
+      <UniqueIdentifier>{a14d7582-cc64-4ca8-bd26-4f03163b646e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Lines">
+      <UniqueIdentifier>{60c9628f-94ea-4d6b-8d3c-72ab61602d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries">
+      <UniqueIdentifier>{02edf425-d657-4610-a025-3f2cc4e59c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\2D">
+      <UniqueIdentifier>{4b899a43-f1cb-48fc-b0af-0ef468eedf5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\imgui">
+      <UniqueIdentifier>{4068615d-735c-4ea4-9596-be14111e6b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\tinyply">
+      <UniqueIdentifier>{894f38f0-78a4-45a4-a0f6-8fdd0411962c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\objloader">
+      <UniqueIdentifier>{c6c35763-144d-4277-b7cf-19e20f813de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\imgui">
+      <UniqueIdentifier>{e07c7844-6adb-4154-b0f3-c51174ac09c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\tinyply">
+      <UniqueIdentifier>{1f1d3d30-42b2-4d07-9e33-0813cf704aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\objloader">
+      <UniqueIdentifier>{f25f865e-3383-45e9-83eb-7064c916f5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Interpolations">
+      <UniqueIdentifier>{6e1e59e4-e8d3-498d-9377-0ab0749f269f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\spline">
+      <UniqueIdentifier>{e8772171-0032-4e02-a7c8-a880a9d9345c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\LiDAR">
+      <UniqueIdentifier>{2409f536-540f-44da-ad18-da285df8d0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Model\PlanarSurface">
+      <UniqueIdentifier>{fa8b8cdf-4b5f-4812-97f2-164a95f7b37d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\BVH Build">
+      <UniqueIdentifier>{e5a67437-04f9-4a02-a138-25ac99c13c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\BVH Build\RadixSort">
+      <UniqueIdentifier>{d0d16257-fff8-4cec-a88c-87c77aea072b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\BVH Build\PrefixScan">
+      <UniqueIdentifier>{4cd246b8-4add-41f2-9e60-80a5520286d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Model\Terrain">
+      <UniqueIdentifier>{a18e3efa-3b88-475d-9f0a-22fba28aa3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\LiDAR\Intersections">
+      <UniqueIdentifier>{c896f8cd-f491-414b-9e4f-b18017e9290c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Interface\Fonts">
+      <UniqueIdentifier>{951ef8f6-0828-4c6c-a24e-b8adf387c3a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Interface\Fonts">
+      <UniqueIdentifier>{bd331c08-29b2-4b6a-8748-293c0c36a5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Noise\Library\PrecompiledHeaders">
+      <UniqueIdentifier>{eb986ef2-7ed8-4ac8-b464-ff60fa75501f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\implot">
+      <UniqueIdentifier>{c2fc8531-5b67-44d9-9009-0c7c7434d77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\implot">
+      <UniqueIdentifier>{a87165dc-88b7-470c-9d4d-e4be9d2289d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\imnodes">
+      <UniqueIdentifier>{bcfb45d1-5161-4934-a745-2a4aec13272b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\imnodes">
+      <UniqueIdentifier>{32b46b58-445c-46c2-aa80-e86a809d8ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\LiDAR\Instancing">
+      <UniqueIdentifier>{520559a6-a3f1-46b6-8528-def0e7454674}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\Aggregation">
+      <UniqueIdentifier>{8b1826cf-767b-4661-ae68-465e4740fa41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\Shaders\Compute\PointCloud">
+      <UniqueIdentifier>{7ba0baa1-ba2f-40d9-881e-409d3bf636c5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Geometry\2D\Vector2.h">
+      <Filter>Archivos de encabezado\Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Vector3.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\General\Adapter.h">
+      <Filter>Archivos de encabezado\Geometry\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\General\BasicOperations.h">
+      <Filter>Archivos de encabezado\Geometry\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\CameraManager.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\GraphicsAppEnumerations.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\MaterialList.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\Renderer.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\RenderingParameters.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\Scene.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\TextureList.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Camera.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\GraphicsCoreEnumerations.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Group3D.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Light.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Material.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Model3D.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\OpenGLUtilities.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Texture.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\VAO.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\AmbientLight.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\BasicAttenuation.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\CameraProjection.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\DirectionalLight.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\FBO.h">
+      <Filter>Archivos de encabezado\Graphics\Core\FBO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\FBOScreenshot.h">
+      <Filter>Archivos de encabezado\Graphics\Core\FBO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ComputeShader.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\LightAttenuation.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\LightType.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\RimLight.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\RangedAttenuation.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\OrthoProjection.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PerspProjection.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PixarAttenuation.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\SpotLight.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PointLight.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\RenderingShader.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ShaderProgram.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ShaderList.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PrecompiledHeaders\stdafx.h">
+      <Filter>Archivos de encabezado\PrecompiledHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\Singleton.h">
+      <Filter>Archivos de encabezado\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ShadowMap.h">
+      <Filter>Archivos de encabezado\Graphics\Core\FBO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\Window.h">
+      <Filter>Archivos de encabezado\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\InputManager.h">
+      <Filter>Archivos de encabezado\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\Image.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\GUI.h">
+      <Filter>Archivos de encabezado\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\TriangleMesh.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PlanarSurface.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Plane.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Triangle3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\AABB.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Edge3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Line3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Ray3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Segment3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ImageUtilities.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\FileManagement.h">
+      <Filter>Archivos de encabezado\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\DrawAABB.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\Intersections3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\3D\PointCloud3D.h">
+      <Filter>Archivos de encabezado\Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\ChronoUtilities.h">
+      <Filter>Archivos de encabezado\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\imconfig.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\imgui.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\examples\imgui_impl_glfw.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\examples\imgui_impl_opengl3.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\imgui_internal.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\lodepng\lodepng.h">
+      <Filter>Archivos de encabezado\Graphics\Core\Image\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\Animation\BezierCurve.h">
+      <Filter>Archivos de encabezado\Geometry\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\Animation\Interpolation.h">
+      <Filter>Archivos de encabezado\Geometry\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\SSAOScene.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\ColorUtilities.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\Animation\LinearInterpolation.h">
+      <Filter>Archivos de encabezado\Geometry\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\PointCloudScene.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\CADModel.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\SSAOFBO.h">
+      <Filter>Archivos de encabezado\Graphics\Core\FBO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utilities\RandomUtilities.h">
+      <Filter>Archivos de encabezado\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\tinyply\tinyply.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\tinyply</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\objloader\OBJ_Loader.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\objloader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\TerrainParameters.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\Fonts\font_awesome.hpp">
+      <Filter>Archivos de encabezado\Interface\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\Fonts\IconsFontAwesome5.h">
+      <Filter>Archivos de encabezado\Interface\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\Fonts\lato.hpp">
+      <Filter>Archivos de encabezado\Interface\Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imgui\imstb_truetype.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\implot\implot.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\implot</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\implot\implot_internal.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\implot</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry\Animation\CatmullRom.h">
+      <Filter>Archivos de encabezado\Geometry\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imnodes\imnodes.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imnodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PointCloudAggregator.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Interface\ForestEditorNode.h">
+      <Filter>Archivos de encabezado\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Core\PointCloud.h">
+      <Filter>Archivos de encabezado\Graphics\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Geometry\2D\Vector2.cpp">
+      <Filter>Archivos de origen\Geometry\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Vector3.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\CameraManager.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\MaterialList.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\Renderer.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\Scene.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\TextureList.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Camera.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Group3D.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Light.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Material.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Texture.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\VAO.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\AmbientLight.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\BasicAttenuation.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\ComputeShader.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\DirectionalLight.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\FBOScreenshot.cpp">
+      <Filter>Archivos de origen\Graphics\Core\FBO</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\FBO.cpp">
+      <Filter>Archivos de origen\Graphics\Core\FBO</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\OrthoProjection.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PerspProjection.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PointLight.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\RangedAttenuation.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\RimLight.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PixarAttenuation.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Attenuation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\ShaderList.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\ShaderProgram.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\SpotLight.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Strategy Pattern\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\RenderingShader.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\ShadowMap.cpp">
+      <Filter>Archivos de origen\Graphics\Core\FBO</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PrecompiledHeaders\stdafx.cpp">
+      <Filter>Archivos de origen\Noise\Library\PrecompiledHeaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\InputManager.cpp">
+      <Filter>Archivos de origen\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\Window.cpp">
+      <Filter>Archivos de origen\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Image.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\GUI.cpp">
+      <Filter>Archivos de origen\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\TriangleMesh.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PlanarSurface.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Plane.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Triangle3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\AABB.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Edge3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Line3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Ray3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\Segment3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Model3D.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\OpenGLUtilities.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\DrawAABB.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\3D\PointCloud3D.cpp">
+      <Filter>Archivos de origen\Geometry\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\imgui.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\imgui_demo.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\examples\imgui_impl_glfw.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\examples\imgui_impl_opengl3.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\lodepng\lodepng.cpp">
+      <Filter>Archivos de origen\Graphics\Core\Image\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\Animation\BezierCurve.cpp">
+      <Filter>Archivos de origen\Geometry\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\Animation\Interpolation.cpp">
+      <Filter>Archivos de origen\Geometry\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\SSAOScene.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\Animation\LinearInterpolation.cpp">
+      <Filter>Archivos de origen\Geometry\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Application\PointCloudScene.cpp">
+      <Filter>Archivos de origen\Graphics\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\CADModel.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\SSAOFBO.cpp">
+      <Filter>Archivos de origen\Graphics\Core\FBO</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\objloader\OBJ_Loader.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\objloader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\Fonts\font_awesome_2.cpp">
+      <Filter>Archivos de origen\Interface\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\Fonts\font_awesome.cpp">
+      <Filter>Archivos de origen\Interface\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\Fonts\lato.cpp">
+      <Filter>Archivos de origen\Interface\Fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\imgui_draw.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\imgui_widgets.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imgui\imgui_tables.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\implot\implot.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\implot</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\implot\implot_demo.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\implot</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\implot\implot_items.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\implot</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\tinyply\tinyply.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\tinyply</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry\Animation\CatmullRom.cpp">
+      <Filter>Archivos de origen\Geometry\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imnodes\imnodes.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imnodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Interface\ForestEditorNode.cpp">
+      <Filter>Archivos de origen\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\Antialiser.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PointCloudAggregator.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Core\PointCloud.cpp">
+      <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\Lines\wireframe-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Lines</Filter>
+    </None>
+    <None Include="Assets\Shaders\Lines\wireframe-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Lines</Filter>
+    </None>
+    <None Include="Assets\Shaders\Filters\blur-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Filters</Filter>
+    </None>
+    <None Include="Assets\Shaders\Filters\blur-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Filters</Filter>
+    </None>
+    <None Include="Assets\Shaders\Filters\normalMapShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Filters</Filter>
+    </None>
+    <None Include="Assets\Shaders\Filters\normalMapShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Filters</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\shadowsShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\shadowsShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\terrainShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\terrainShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMesh-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMesh-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\uniformTriangleMesh-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\uniformTriangleMesh-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\colouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\colouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\buildClusterBuffer-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\clusterMerging-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\findBestNeighbor-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\reallocateClusters-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Group\computeGroupAABB-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Group</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\computeMortonCodes-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\computeTangents_1-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\computeTangents_2-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\modelApplyModelMatrix-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\modelMeshGeneration-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PrefixScan\downSweep-prefixScan-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build\PrefixScan</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PrefixScan\reduce-prefixScan-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build\PrefixScan</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PrefixScan\resetLastPosition-prefixScan-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build\PrefixScan</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\RadixSort\bitMask-radixSort-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build\RadixSort</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\RadixSort\reallocateIndices-radixSort-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build\RadixSort</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Templates\modelStructs.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Templates</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Generic\resetBufferIndex-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Generic</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\BVHGeneration\endLoopComputations-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\BVH Build</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PlanarSurface\planarSurfaceFaces-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\PlanarSurface</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PlanarSurface\planarSurfaceGeometryTopology-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\PlanarSurface</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\computeNormals-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\terrainErosion-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudHeight-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudHeight-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\generateVegetation-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\debugQuad-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\debugQuad-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\genVegetationMap-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\waterLake-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\waterLake-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\terrainFaces-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\computeNormals-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\terrainColouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\terrainColouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\waterColouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\waterColouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\vegColouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\vegColouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\terrainGeometryTopology-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\reflectiveTriangleMesh-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\reflectiveTriangleMesh-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\computeFaceAABB-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudHeightGrayscale-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudHeightGrayscale-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\reflectiveColouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\reflectiveColouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\computeTreeProperties-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\treeTriangleMesh-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\treeTriangleMesh-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\grassTriangleMesh-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\grassTriangleMesh-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudReturnNumber-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudReturnNumber-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\generateTreeGeometryTopology-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\regularGrid-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\regularGrid-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceShadowsShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceShadowsShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\treeColouredPointCloud-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\treeColouredPointCloud-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudIntensity-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\Points\pointCloudIntensity-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Points</Filter>
+    </None>
+    <None Include="Assets\Shaders\2D\ssaoShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\2D</Filter>
+    </None>
+    <None Include="Assets\Shaders\2D\ssaoShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\2D</Filter>
+    </None>
+    <None Include="Assets\Shaders\2D\blurSSAOShader-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\2D</Filter>
+    </None>
+    <None Include="Assets\Shaders\2D\blurSSAOShader-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\2D</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshNormal-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshNormal-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshPosition-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshPosition-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshGroup-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\triangleMeshGroup-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceTriangleMeshNormal-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceTriangleMeshNormal-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceTriangleMeshPosition-frag.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Triangles\multiInstanceTriangleMeshPosition-vert.glsl">
+      <Filter>Archivos de recursos\Shaders\Triangles</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Terrain\computeBuildingPosition-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model\Terrain</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Interpolations\buildBezierCurve-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Interpolations</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\Intersections\rayAABB_inters-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR\Intersections</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\Intersections\rayTriangle_inters-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR\Intersections</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Templates\constraints.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Templates</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Templates\random.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Templates</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\lidar\LiDARSensor-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\rayBVH-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\collisionBVH-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\computeIntensity-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\reflectIrradiance-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\findBVHCollision-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\solveCollision-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\prepareData-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\updateReturns-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Model\retrieveColors-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Model</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\addOutlier-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\computeColor-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\LiDAR\Instancing\terrestrialSpherical-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\LiDAR\Instancing</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Templates\rotation.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Templates</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Aggregation\singleAggregation-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Aggregation</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\Aggregation\penaltyAggregation-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\Aggregation</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBuffer-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBuffer-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\storeTexture-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+  </ItemGroup>
+</Project>
