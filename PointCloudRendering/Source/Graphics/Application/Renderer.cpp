@@ -92,7 +92,7 @@ void Renderer::prepareOpenGL(const uint16_t width, const uint16_t height)
 
 void Renderer::render()
 {
-	_scene[_currentScene]->render(mat4(1.0f), _state.get());
+	_scene[_currentScene]->render(glm::rotate(mat4(1.0f), -glm::pi<float>() / 2.0f, vec3(1.0f, .0f, .0f)), _state.get());
 }
 
 bool Renderer::getScreenshot(const std::string& filename)

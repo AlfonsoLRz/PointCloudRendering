@@ -10,7 +10,7 @@
 
 /// Initialization of static attributes
 const std::string PointCloudScene::SCENE_CAMERA_FILE = "Camera.txt";
-const std::string PointCloudScene::POINT_CLOUD_FILE = "Assets/Models/PointCloudSubsample01";
+const std::string PointCloudScene::POINT_CLOUD_FILE = "Assets/Models/PointCloud";
 
 // [Public methods]
 
@@ -46,8 +46,8 @@ void PointCloudScene::render(const mat4& mModel, RenderingParameters* rendParams
 
 void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rendParams)
 {
-	Texture* texture = TextureList::getInstance()->getTexture(CGAppEnum::TEXTURE_LIDAR_HEIGHT);
-	Camera* activeCamera = _cameraManager->getActiveCamera();
+	Texture* texture			= TextureList::getInstance()->getTexture(CGAppEnum::TEXTURE_LIDAR_HEIGHT);
+	Camera* activeCamera		= _cameraManager->getActiveCamera();
 	const mat4 projectionMatrix = activeCamera->getViewProjMatrix() * mModel;
 
 	_pointCloudAggregator->render(projectionMatrix);
@@ -61,7 +61,7 @@ void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rend
 
 void PointCloudScene::loadDefaultCamera(Camera* camera)
 {
-	camera->setPosition(vec3(3.0f, 1.338f, 2.94f));
+	camera->setPosition(vec3(3.0f, 3.338f, 2.94f));
 	camera->setLookAt(vec3(-5.31f, 1.65f, -2.57f));
 }
 

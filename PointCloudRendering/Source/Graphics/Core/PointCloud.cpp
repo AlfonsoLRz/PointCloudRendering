@@ -128,8 +128,8 @@ bool PointCloud::loadModelFromPLY(const mat4& modelMatrix)
 			{
 				baseIndex = index * 3;
 
-				_points[index] = PointModel{ vec4(pointsRaw[baseIndex], pointsRaw[baseIndex + 1], pointsRaw[baseIndex + 2], 1.0f),
-										     vec4(colorsRaw[baseIndex] / 255.0f, colorsRaw[baseIndex + 1] / 255.0f, colorsRaw[baseIndex + 2] / 255.0f, 1.0f) };
+				_points[index] = PointModel{ vec3(pointsRaw[baseIndex], pointsRaw[baseIndex + 1], pointsRaw[baseIndex + 2]),
+										     PointModel::getRGBColor(vec3(colorsRaw[baseIndex], colorsRaw[baseIndex + 1], colorsRaw[baseIndex + 2])) };
 				_aabb.update(_points[index]._point);
 			}
 		}
@@ -191,7 +191,7 @@ void PointCloud::threadedWritePointCloud(const std::string& filename, const bool
 	for (int pointIdx = 0; pointIdx < _points.size(); ++pointIdx)
 	{
 		position.push_back(_points[pointIdx]._point);
-		rgb.push_back(_points[pointIdx]._rgb);
+		rgb.push_back(_points[pointIdx].getRGBVec3());
 	}
 
 	const std::string componentName = "pointCloud";

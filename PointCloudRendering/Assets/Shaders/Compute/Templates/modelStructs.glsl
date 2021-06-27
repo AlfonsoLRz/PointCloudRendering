@@ -35,6 +35,6 @@ struct BVHCluster
 
 struct PointModel
 {
-	vec4	point;
-	vec4	rgb;
+	vec3	point;
+	uint	rgb;
 };

@@ -14,24 +14,25 @@
 class PointCloudAggregator
 {
 protected:
-	PointCloud*			_pointCloud;
+	PointCloud*				_pointCloud;
 	
 	// SSBO
-	std::vector<GLuint> _pointCloudSSBO;
-	std::vector<GLuint> _pointCloudChunkSize;
-	GLuint				_depthBufferSSBO;
+	std::vector<GLuint>		_pointCloudSSBO;
+	std::vector<GLuint>		_pointCloudChunkSize;
+	GLuint					_depthBufferSSBO;
 
 	// OpenGL Texture
-	GLuint				_textureID;
+	GLuint					_textureID;
 
 	// Shaders
-	ComputeShader*		_projectionShader;
-	ComputeShader*		_resetDepthBufferShader;
-	ComputeShader*		_storeTexture;
+	ComputeShader*			_projectionShader;
+	ComputeShader*			_resetDepthBufferShader;
+	ComputeShader*			_storeTexture;
 
 	// Window
-	uvec2				_windowSize;
-	bool				_changedWindowSize;
+	RenderingParameters*	_renderingParameters;
+	uvec2					_windowSize;
+	bool					_changedWindowSize;
 
 protected:
 	/**

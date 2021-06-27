@@ -23,7 +23,7 @@ void main()
 	if (index >= numPoints) return;
 
 	// Projection: 3D to 2D
-	vec4 projectedPoint	= cameraMatrix * (points[index].point);
+	vec4 projectedPoint	= cameraMatrix * vec4(points[index].point, 1.0f);
 	projectedPoint.xyz /= projectedPoint.w;
 
 	if (projectedPoint.w <= 0.0 || projectedPoint.x < -1.0 || projectedPoint.x > 1.0 || projectedPoint.y < -1.0 || projectedPoint.y > 1.0) 
@@ -34,7 +34,9 @@ void main()
 	ivec2 windowPosition			= ivec2((projectedPoint.xy * 0.5f + 0.5f) * windowSize);
 	uint pointIndex					= windowPosition.y * windowSize.x + windowPosition.x;
 	uint64_t distanceInt			= floatBitsToUint(projectedPoint.w);				// Another way: multiply distance by 10^x. It is more precise when x is larger
-	const uint64_t depthDescription = uint(index +  offset) | (distanceInt << 32);		// Distance to most significant bits. w saves the point index (mainly for multiple batch methodology)
+	const uint64_t depthDescription = points[index].rgb | (distanceInt << 32);			// Distance to most significant bits. w saves the point index (mainly for multiple batch methodology)
+	const uint64_t currentDepth		= depthBuffer[pointIndex];
 
-	atomicMin(depthBuffer[pointIndex], depthDescription);								// AtomicMin: inf vs distance + index for the atomicMin call in this index
+	if (depthDescription < currentDepth)
+		atomicMin(depthBuffer[pointIndex], depthDescription);								// AtomicMin: inf vs distance + index for the atomicMin call in this index
 }

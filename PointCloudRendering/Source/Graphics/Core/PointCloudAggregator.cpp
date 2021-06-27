@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PointCloudAggregator.h"
 
+#include "Graphics/Application/Renderer.h"
 #include "Graphics/Core/OpenGLUtilities.h"
 #include "Graphics/Core/ShaderList.h"
 #include "Interface/Window.h"
@@ -13,6 +14,8 @@ PointCloudAggregator::PointCloudAggregator(PointCloud* pointCloud) :
 	ShaderList* shaderList	= ShaderList::getInstance();
 	Window* window			= Window::getInstance();
 
+	_renderingParameters	= Renderer::getInstance()->getRenderingParameters();
+	
 	_resetDepthBufferShader = shaderList->getComputeShader(RendEnum::RESET_DEPTH_BUFFER_SHADER);
 	_projectionShader		= shaderList->getComputeShader(RendEnum::PROJECTION_SHADER);
 	_storeTexture			= shaderList->getComputeShader(RendEnum::STORE_TEXTURE_SHADER);
@@ -55,7 +58,7 @@ void PointCloudAggregator::render(const mat4& projectionMatrix)
 		_changedWindowSize = false;
 	}
 
-	//this->projectPointCloud(projectionMatrix);
+	this->projectPointCloud(projectionMatrix);
 	this->writeColorsTexture();
 }
 
@@ -72,7 +75,6 @@ unsigned PointCloudAggregator::getAllowedNumberOfPoints()
 
 void PointCloudAggregator::bindTexture()
 {
-	glActiveTexture(GL_TEXTURE0);
 	glBindImageTexture(0, _textureID, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA8);
 }
 
@@ -97,7 +99,7 @@ void PointCloudAggregator::projectPointCloud(const mat4& projectionMatrix)
 		_projectionShader->use();
 		_projectionShader->setUniform("cameraMatrix", projectionMatrix);
 		_projectionShader->setUniform("numPoints", numPoints);
-		_projectionShader->setUniform("offset", 0);
+		//_projectionShader->setUniform("offset", 0);
 		_projectionShader->setUniform("windowSize", _windowSize);
 		_projectionShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
 
@@ -121,9 +123,10 @@ void PointCloudAggregator::writeColorsTexture()
 {
 	const int numGroupsImage = ComputeShader::getNumGroups(_windowSize.x * _windowSize.y);
 	
-	_storeTexture->bindBuffers(std::vector<GLuint> { /*_depthBufferSSBO, _pointCloudSSBO[0]*/ });
+	_storeTexture->bindBuffers(std::vector<GLuint> { _depthBufferSSBO });
 	_storeTexture->use();
 	this->bindTexture();
+	_storeTexture->setUniform("backgroundColor", _renderingParameters->_backgroundColor);
 	_storeTexture->setUniform("texImage", GLint(0));
 	_storeTexture->setUniform("windowSize", _windowSize);
 	_storeTexture->execute(numGroupsImage, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
