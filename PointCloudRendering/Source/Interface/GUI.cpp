@@ -5,11 +5,12 @@
 #include "Interface/Fonts/font_awesome.hpp"
 #include "Interface/Fonts/lato.hpp"
 #include "Interface/Fonts/IconsFontAwesome5.h"
+#include "imfiledialog/ImGuiFileDialog.h"
 
 /// [Protected methods]
 
 GUI::GUI() :
-	_showRenderingSettings(false), _showScreenshotSettings(false), _showAboutUs(false), _showControls(false)
+	_showRenderingSettings(false), _showScreenshotSettings(false), _showAboutUs(false), _showControls(false), _showFileDialog(false)
 {
 	_renderer			= Renderer::getInstance();	
 	_renderingParams	= Renderer::getInstance()->getRenderingParameters();
@@ -30,12 +31,13 @@ void GUI::addForestNode(const int id, const ImVec2& position)
 void GUI::createMenu()
 {
 	ImGuiIO& io = ImGui::GetIO();
-
+	
 	if (_showRenderingSettings)		showRenderingSettings();
 	if (_showScreenshotSettings)	showScreenshotSettings();
 	if (_showAboutUs)				showAboutUsWindow();
 	if (_showControls)				showControls();
 	if (_showForestEditor)			showForestEditor();
+	if (_showFileDialog)			showFileDialog();
 
 	if (ImGui::BeginMainMenuBar())
 	{
@@ -43,6 +45,7 @@ void GUI::createMenu()
 		{
 			ImGui::MenuItem(ICON_FA_CUBE "Rendering", NULL, &_showRenderingSettings);
 			ImGui::MenuItem(ICON_FA_IMAGE "Screenshot", NULL, &_showScreenshotSettings);
+			ImGui::MenuItem(ICON_FA_SAVE "Open Point Cloud", NULL, &_showFileDialog);
 			ImGui::EndMenu();
 		}
 
@@ -126,6 +129,27 @@ void GUI::showControls()
 	}
 
 	ImGui::End();
+}
+
+void GUI::showFileDialog()
+{
+	ImGuiFileDialog::Instance()->OpenDialog("Choose Point Cloud", "Choose File", ".ply", ".");
+
+	// display
+	if (ImGuiFileDialog::Instance()->Display("Choose Point Cloud"))
+	{
+		// action if OK
+		if (ImGuiFileDialog::Instance()->IsOk())
+		{
+			std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+			std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+			// action
+		}
+
+		// close
+		ImGuiFileDialog::Instance()->Close();
+		_showFileDialog = false;
+	}
 }
 
 void GUI::showForestEditor()

@@ -31,6 +31,7 @@ protected:
 	// GUI state
 	bool							_showAboutUs;						//!< About us window
 	bool							_showControls;						//!< Shows application controls
+	bool							_showFileDialog;					//!< Shows a file dialog that allows opening a point cloud in .ply format
 	bool							_showForestEditor;					//!< Shows an editor where forest scene can be defined
 	bool							_showRenderingSettings;				//!< Displays a window which allows the user to modify the rendering parameters
 	bool							_showScreenshotSettings;			//!< Shows a window which allows to take an screenshot at any size
@@ -84,6 +85,11 @@ protected:
 	*	@brief Displays a table with the application controls (mouse, keyboard, etc).
 	*/
 	void showControls();
+
+	/**
+	*	@brief Displays a file dialog to open a new point cloud (.ply).
+	*/
+	void showFileDialog();
 
 	/**
 	*	@brief Displays a node editor to specify a procedural forest scene. 

@@ -10,7 +10,7 @@
 
 /// Initialization of static attributes
 const std::string PointCloudScene::SCENE_CAMERA_FILE = "Camera.txt";
-const std::string PointCloudScene::POINT_CLOUD_FILE = "Assets/Models/PointCloud";
+const std::string PointCloudScene::POINT_CLOUD_FILE = "Assets/Models/PointCloudSubsample01";
 
 // [Public methods]
 

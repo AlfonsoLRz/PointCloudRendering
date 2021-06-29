@@ -256,6 +256,12 @@
     <Filter Include="Archivos de recursos\Shaders\Compute\PointCloud">
       <UniqueIdentifier>{7ba0baa1-ba2f-40d9-881e-409d3bf636c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\ImportedLibraries\imfiledialog">
+      <UniqueIdentifier>{9cc0b3d8-b4f6-4193-b5f0-fa1b1cf9080a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ImportedLibraries\imfiledialog">
+      <UniqueIdentifier>{3c5184ac-87a6-463e-9bb8-36cfe7fc482e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Geometry\2D\Vector2.h">
@@ -528,6 +534,12 @@
     <ClInclude Include="Source\Graphics\Core\PointCloud.h">
       <Filter>Archivos de encabezado\Graphics\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries\imfiledialog\ImGuiFileDialog.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imfiledialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\imfiledialog\ImGuiFileDialogConfig.h">
+      <Filter>Archivos de encabezado\ImportedLibraries\imfiledialog</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Geometry\2D\Vector2.cpp">
@@ -763,6 +775,9 @@
     </ClCompile>
     <ClCompile Include="Source\Graphics\Core\PointCloud.cpp">
       <Filter>Archivos de origen\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\imfiledialog\ImGuiFileDialog.cpp">
+      <Filter>Archivos de origen\ImportedLibraries\imfiledialog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1121,6 +1136,9 @@
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
     <None Include="Assets\Shaders\Compute\PointCloud\storeTexture-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\computeMortonCodes-comp.glsl">
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
   </ItemGroup>

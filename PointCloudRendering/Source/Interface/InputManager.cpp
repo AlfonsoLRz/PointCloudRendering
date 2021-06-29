@@ -75,7 +75,7 @@ std::vector<float> InputManager::getMovementSpeed()
 
 	movSpeed[BOOM]		= 0.1f;
 	movSpeed[CRANE]		= 0.1f;
-	movSpeed[DOLLY]		= 0.01f;
+	movSpeed[DOLLY]		= 0.08f;
 	movSpeed[ORBIT_XZ]	= 0.05f;
 	movSpeed[ORBIT_Y]	= 0.03f;
 	movSpeed[PAN]		= 0.002f;

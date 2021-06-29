@@ -8,6 +8,8 @@
 *	@date 25/06/2021
 */
 
+typedef PointCloud::PointModel Point;
+
 /**
 *	@brief 
 */
@@ -20,6 +22,7 @@ protected:
 	std::vector<GLuint>		_pointCloudSSBO;
 	std::vector<GLuint>		_pointCloudChunkSize;
 	GLuint					_depthBufferSSBO;
+	std::vector<Point>		_supportBuffer;
 
 	// OpenGL Texture
 	GLuint					_textureID;
@@ -45,11 +48,26 @@ protected:
 	*	@brief Binds the texture. 
 	*/
 	void bindTexture();
+
+	/**
+	*	@brief
+	*/
+	GLuint calculateMortonCodes(const GLuint pointsSSBO, unsigned numPoints);
 	
 	/**
 	*	@brief Projects the point cloud SSBOs into a window plane. 
 	*/
 	void projectPointCloud(const mat4& projectionMatrix);
+
+	/**
+	*	@brief
+	*/
+	void sortPoints(const GLuint pointsSSBO, unsigned numPoints);
+
+	/**
+	*	@brief
+	*/
+	GLuint sortFacesByMortonCode(const GLuint mortonCodes, unsigned numPoints);
 	
 	/**
 	*	@brief  

@@ -3,6 +3,7 @@
 #extension GL_ARB_compute_variable_group_size: enable
 #extension GL_ARB_gpu_shader_int64: require
 #extension GL_NV_shader_atomic_int64: require
+#extension GL_NV_shader_subgroup_partitioned: require
 
 #include <Assets/Shaders/Compute/Templates/modelStructs.glsl>
 
@@ -33,10 +34,13 @@ void main()
 
 	ivec2 windowPosition			= ivec2((projectedPoint.xy * 0.5f + 0.5f) * windowSize);
 	uint pointIndex					= windowPosition.y * windowSize.x + windowPosition.x;
-	uint64_t distanceInt			= floatBitsToUint(projectedPoint.w);				// Another way: multiply distance by 10^x. It is more precise when x is larger
-	const uint64_t depthDescription = points[index].rgb | (distanceInt << 32);			// Distance to most significant bits. w saves the point index (mainly for multiple batch methodology)
+	uint distanceInt				= floatBitsToUint(projectedPoint.w);				// Another way: multiply distance by 10^x. It is more precise when x is larger
+	const uint64_t depthDescription = points[index].rgb | (uint64_t(distanceInt) << 32);			// Distance to most significant bits. w saves the point index (mainly for multiple batch methodology)
 	const uint64_t currentDepth		= depthBuffer[pointIndex];
 
-	if (depthDescription < currentDepth)
+	uvec4 subgroup	= subgroupPartitionNV(pointIndex);
+	uint minDepth	= subgroupPartitionedMinNV(distanceInt, subgroup);
+
+	if (minDepth == distanceInt)
 		atomicMin(depthBuffer[pointIndex], depthDescription);								// AtomicMin: inf vs distance + index for the atomicMin call in this index
 }

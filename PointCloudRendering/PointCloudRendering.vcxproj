@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Libraries\imfiledialog\ImGuiFileDialog.h" />
+    <ClInclude Include="Libraries\imfiledialog\ImGuiFileDialogConfig.h" />
     <ClInclude Include="Libraries\imgui\examples\imgui_impl_glfw.h" />
     <ClInclude Include="Libraries\imgui\examples\imgui_impl_opengl3.h" />
     <ClInclude Include="Libraries\imgui\imconfig.h" />
@@ -111,6 +113,12 @@
     <ClInclude Include="Source\Utilities\Singleton.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Libraries\imfiledialog\ImGuiFileDialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Libraries\imgui\examples\imgui_impl_glfw.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -284,6 +292,7 @@
     <None Include="Assets\Shaders\Compute\Model\retrieveColors-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PlanarSurface\planarSurfaceFaces-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBuffer-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\computeMortonCodes-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\storeTexture-comp.glsl" />
     <None Include="Assets\Shaders\Compute\RadixSort\bitMask-radixSort-comp.glsl" />

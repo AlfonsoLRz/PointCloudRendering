@@ -1,11 +1,8 @@
 ﻿  PointCloudScene.cpp
-  Renderer.cpp
-  Antialiser.cpp
-  PointCloudAggregator.cpp
      Creando biblioteca D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exp
   Generando código
-  303 of 8476 functions ( 3.6%) were compiled, the rest were copied from previous compilation.
-    4 functions were new in current compilation
-    151 functions had inline decision re-evaluated but remain unchanged
+  189 of 9437 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    60 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   PointCloudRendering.vcxproj -> D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exe
