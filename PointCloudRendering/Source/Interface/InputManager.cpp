@@ -280,6 +280,8 @@ void InputManager::mouseScrollEvent(GLFWwindow* window, double xoffset, double y
 
 void InputManager::resizeEvent(GLFWwindow* window, int width, int height)
 {
+	if (width == 0 || height == 0) return;
+	
 	InputManager* inputManager = InputManager::getInstance();
 	Window::getInstance()->changedSize(width, height);
 	Renderer::getInstance()->resize(width, height);

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GUI.h"
 
+#include "Graphics/Application/PointCloudParameters.h"
 #include "Graphics/Application/Renderer.h"
 #include "Interface/Fonts/font_awesome.hpp"
 #include "Interface/Fonts/lato.hpp"
@@ -285,18 +286,6 @@ void GUI::showRenderingSettings()
 			{
 				this->leaveSpace(1);
 
-				ImGui::Checkbox("Render BVH", &_renderingParams->_showBVH);
-
-				{
-					this->leaveSpace(1);
-					ImGui::NewLine(); ImGui::SameLine(0, 22);
-					ImGui::ColorEdit3("BVH color", &_renderingParams->_bvhWireframeColor[0]);
-					ImGui::NewLine(); ImGui::SameLine(0, 22);
-					ImGui::SliderFloat("BVH nodes", &_renderingParams->_bvhNodesPercentage, 0.0f, 1.0f);
-					this->leaveSpace(2);
-				}
-
-				ImGui::Checkbox("Render Terrain Regular Grid", &_renderingParams->_showTerrainRegularGrid);
 				this->leaveSpace(1);
 
 				ImGui::EndTabItem();
@@ -308,6 +297,7 @@ void GUI::showRenderingSettings()
 
 				ImGui::SliderFloat("Point Size", &_renderingParams->_scenePointSize, 0.1f, 50.0f);
 				ImGui::ColorEdit3("Point Cloud Color", &_renderingParams->_scenePointCloudColor[0]);
+				ImGui::Checkbox("HQR Rendering Optimization", &PointCloudParameters::_enableHQR);
 
 				ImGui::EndTabItem();
 			}

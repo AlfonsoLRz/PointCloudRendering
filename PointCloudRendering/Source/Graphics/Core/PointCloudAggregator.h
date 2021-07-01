@@ -21,16 +21,17 @@ protected:
 	// SSBO
 	std::vector<GLuint>		_pointCloudSSBO;
 	std::vector<GLuint>		_pointCloudChunkSize;
-	GLuint					_depthBufferSSBO;
+	GLuint					_depthBufferSSBO, _rawDepthBufferSSBO, _color01SSBO, _color02SSBO;
 	std::vector<Point>		_supportBuffer;
 
 	// OpenGL Texture
 	GLuint					_textureID;
 
 	// Shaders
-	ComputeShader*			_projectionShader;
-	ComputeShader*			_resetDepthBufferShader;
-	ComputeShader*			_storeTexture;
+	ComputeShader*			_addColorsHQRShader;
+	ComputeShader*			_projectionShader, *_projectionHQRShader;
+	ComputeShader*			_resetDepthBufferShader, * _resetDepthBufferHQRShader;
+	ComputeShader*			_storeTexture, *_storeHQRTexture;
 
 	// Window
 	RenderingParameters*	_renderingParameters;
@@ -60,6 +61,11 @@ protected:
 	void projectPointCloud(const mat4& projectionMatrix);
 
 	/**
+	*	@brief Projects the point cloud SSBOs into a window plane.
+	*/
+	void projectPointCloudHQR(const mat4& projectionMatrix);
+
+	/**
 	*	@brief
 	*/
 	void sortPoints(const GLuint pointsSSBO, unsigned numPoints);
@@ -78,6 +84,11 @@ protected:
 	*	@brief Writes colors from the point cloud into a texture. 
 	*/
 	void writeColorsTexture();
+
+	/**
+	*	@brief Writes colors from the point cloud into a texture.
+	*/
+	void writeColorsTextureHQR();
 
 	/**
 	*	@brief Transfer point cloud information to GPU. 

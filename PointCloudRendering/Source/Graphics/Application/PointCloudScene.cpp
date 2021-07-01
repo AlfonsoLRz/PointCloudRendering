@@ -32,7 +32,7 @@ void PointCloudScene::modifySize(const uint16_t width, const uint16_t height)
 {
 	Scene::modifySize(width, height);
 
-	
+	_pointCloudAggregator->changedSize(width, height);
 }
 
 void PointCloudScene::render(const mat4& mModel, RenderingParameters* rendParams)

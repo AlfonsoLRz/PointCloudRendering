@@ -540,6 +540,9 @@
     <ClInclude Include="Libraries\imfiledialog\ImGuiFileDialogConfig.h">
       <Filter>Archivos de encabezado\ImportedLibraries\imfiledialog</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Graphics\Application\PointCloudParameters.h">
+      <Filter>Archivos de encabezado\Graphics\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Geometry\2D\Vector2.cpp">
@@ -1139,6 +1142,18 @@
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
     <None Include="Assets\Shaders\Compute\PointCloud\computeMortonCodes-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBufferHQR-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBufferHQR-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\storeTextureHQR-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\addColorsHQR-comp.glsl">
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
   </ItemGroup>

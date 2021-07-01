@@ -14,7 +14,6 @@ layout (std430, binding = 1) buffer PointBuffer { PointModel	points[]; };
 
 uniform mat4	cameraMatrix;
 uniform uint	numPoints;
-uniform uint	offset;
 uniform uvec2	windowSize;
 
 

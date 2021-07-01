@@ -49,6 +49,7 @@
     <ClInclude Include="Source\Geometry\Animation\LinearInterpolation.h" />
     <ClInclude Include="Source\Geometry\General\Adapter.h" />
     <ClInclude Include="Source\Geometry\General\BasicOperations.h" />
+    <ClInclude Include="Source\Graphics\Application\PointCloudParameters.h" />
     <ClInclude Include="Source\Graphics\Application\PointCloudScene.h" />
     <ClInclude Include="Source\Graphics\Application\CameraManager.h" />
     <ClInclude Include="Source\Graphics\Application\GraphicsAppEnumerations.h" />
@@ -291,10 +292,14 @@
     <None Include="Assets\Shaders\Compute\Model\computeNormals-comp.glsl" />
     <None Include="Assets\Shaders\Compute\Model\retrieveColors-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PlanarSurface\planarSurfaceFaces-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\addColorsHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBuffer-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBufferHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\computeMortonCodes-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBuffer-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBufferHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\storeTexture-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\storeTextureHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\RadixSort\bitMask-radixSort-comp.glsl" />
     <None Include="Assets\Shaders\Compute\BVHGeneration\buildClusterBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\BVHGeneration\clusterMerging-comp.glsl" />

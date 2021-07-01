@@ -92,16 +92,20 @@ struct RendEnum
 		PLANAR_SURFACE_TOPOLOGY,
 
 		// Point cloud
+		ADD_COLORS_HQR,
 		COMPUTE_MORTON_CODES_PCL,
 		RESET_DEPTH_BUFFER_SHADER,
+		RESET_DEPTH_BUFFER_HQR_SHADER,
 		PROJECTION_SHADER,
-		STORE_TEXTURE_SHADER
+		PROJECTION_HQR_SHADER,
+		STORE_TEXTURE_SHADER,
+		STORE_TEXTURE_HQR_SHADER
 	};
 
 	/**
 	*	@return Number of compute shaders.
 	*/
-	const static GLsizei numComputeShaderTypes() { return STORE_TEXTURE_SHADER + 1; }
+	const static GLsizei numComputeShaderTypes() { return STORE_TEXTURE_HQR_SHADER + 1; }
 
 	/**
 	*	@return Number of rendering shaders.

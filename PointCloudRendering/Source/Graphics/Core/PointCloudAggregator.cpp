@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PointCloudAggregator.h"
 
+#include "Graphics/Application/PointCloudParameters.h"
 #include "Graphics/Application/Renderer.h"
 #include "Graphics/Core/OpenGLUtilities.h"
 #include "Graphics/Core/ShaderList.h"
@@ -15,15 +16,22 @@ PointCloudAggregator::PointCloudAggregator(PointCloud* pointCloud) :
 	Window* window			= Window::getInstance();
 
 	_renderingParameters	= Renderer::getInstance()->getRenderingParameters();
-	
+
+	_addColorsHQRShader		= shaderList->getComputeShader(RendEnum::ADD_COLORS_HQR);
 	_resetDepthBufferShader = shaderList->getComputeShader(RendEnum::RESET_DEPTH_BUFFER_SHADER);
+	_resetDepthBufferHQRShader = shaderList->getComputeShader(RendEnum::RESET_DEPTH_BUFFER_HQR_SHADER);
 	_projectionShader		= shaderList->getComputeShader(RendEnum::PROJECTION_SHADER);
+	_projectionHQRShader	= shaderList->getComputeShader(RendEnum::PROJECTION_HQR_SHADER);
 	_storeTexture			= shaderList->getComputeShader(RendEnum::STORE_TEXTURE_SHADER);
+	_storeHQRTexture		= shaderList->getComputeShader(RendEnum::STORE_TEXTURE_HQR_SHADER);
 	_supportBuffer.resize(this->getAllowedNumberOfPoints());
 
 	_windowSize				= window->getSize();
 
+	_color01SSBO			= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	_color02SSBO			= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 	_depthBufferSSBO		= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	_rawDepthBufferSSBO		= ComputeShader::setWriteBuffer(GLuint(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 
 	// Window texture
 	glGenTextures(1, &_textureID);
@@ -41,7 +49,10 @@ PointCloudAggregator::~PointCloudAggregator()
 		glDeleteBuffers(1, &ssbo);
 	}
 
+	glDeleteBuffers(1, &_color01SSBO);
+	glDeleteBuffers(1, &_color02SSBO);
 	glDeleteBuffers(1, &_depthBufferSSBO);
+	glDeleteBuffers(1, &_rawDepthBufferSSBO);
 	glDeleteTextures(1, &_textureID);
 }
 
@@ -59,8 +70,16 @@ void PointCloudAggregator::render(const mat4& projectionMatrix)
 		_changedWindowSize = false;
 	}
 
-	this->projectPointCloud(projectionMatrix);
-	this->writeColorsTexture();
+	if (PointCloudParameters::_enableHQR)
+	{
+		this->projectPointCloudHQR(projectionMatrix);
+		this->writeColorsTextureHQR();
+	}
+	else
+	{
+		this->projectPointCloud(projectionMatrix);
+		this->writeColorsTexture();
+	}
 }
 
 // [Protected methods]
@@ -119,6 +138,42 @@ void PointCloudAggregator::projectPointCloud(const mat4& projectionMatrix)
 		_projectionShader->setUniform("numPoints", numPoints);
 		_projectionShader->setUniform("windowSize", _windowSize);
 		_projectionShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+		accumSize += _pointCloudChunkSize[chunk++];
+	}
+}
+
+void PointCloudAggregator::projectPointCloudHQR(const mat4& projectionMatrix)
+{
+	unsigned chunk = 0, accumSize = 0;
+	const int numGroupsImage = ComputeShader::getNumGroups(_windowSize.x * _windowSize.y);
+
+	// 1. Fill buffer of 32 bits with UINT_MAX
+	_resetDepthBufferHQRShader->bindBuffers(std::vector<GLuint> { _rawDepthBufferSSBO, _color01SSBO, _color02SSBO });
+	_resetDepthBufferHQRShader->use();
+	_resetDepthBufferHQRShader->setUniform("windowSize", _windowSize);
+	_resetDepthBufferHQRShader->execute(numGroupsImage, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+	for (GLuint pointsSSBO : _pointCloudSSBO)
+	{
+		const unsigned numPoints = _pointCloudChunkSize[chunk];
+		const int numGroupsPoints = ComputeShader::getNumGroups(numPoints);
+
+		// 2. Transform points and use atomicMin to retrieve the nearest point
+		_projectionHQRShader->bindBuffers(std::vector<GLuint> { _rawDepthBufferSSBO, pointsSSBO });
+		_projectionHQRShader->use();
+		_projectionHQRShader->setUniform("cameraMatrix", projectionMatrix);
+		_projectionHQRShader->setUniform("numPoints", numPoints);
+		_projectionHQRShader->setUniform("windowSize", _windowSize);
+		_projectionHQRShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+		// 3. Accumulate colors once the minimum depth is defined
+		_addColorsHQRShader->bindBuffers(std::vector<GLuint> { _rawDepthBufferSSBO, _color01SSBO, _color02SSBO, pointsSSBO });
+		_addColorsHQRShader->use();
+		_addColorsHQRShader->setUniform("cameraMatrix", projectionMatrix);
+		_addColorsHQRShader->setUniform("numPoints", numPoints);
+		_addColorsHQRShader->setUniform("windowSize", _windowSize);
+		_addColorsHQRShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
 
 		accumSize += _pointCloudChunkSize[chunk++];
 	}
@@ -246,10 +301,14 @@ GLuint PointCloudAggregator::sortFacesByMortonCode(const GLuint mortonCodes, uns
 void PointCloudAggregator::updateWindowBuffers()
 {
 	ComputeShader::updateWriteBuffer(_depthBufferSSBO, uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	ComputeShader::updateWriteBuffer(_rawDepthBufferSSBO, GLuint(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	ComputeShader::updateWriteBuffer(_color01SSBO, uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	ComputeShader::updateWriteBuffer(_color02SSBO, uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 
 	// Update size of texture
 	glBindTexture(GL_TEXTURE_2D, _textureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, _windowSize.x, _windowSize.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+	glGenerateMipmap(GL_TEXTURE_2D);
 }
 
 void PointCloudAggregator::writeColorsTexture()
@@ -263,6 +322,19 @@ void PointCloudAggregator::writeColorsTexture()
 	_storeTexture->setUniform("texImage", GLint(0));
 	_storeTexture->setUniform("windowSize", _windowSize);
 	_storeTexture->execute(numGroupsImage, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+}
+
+void PointCloudAggregator::writeColorsTextureHQR()
+{
+	const int numGroupsImage = ComputeShader::getNumGroups(_windowSize.x * _windowSize.y);
+
+	_storeHQRTexture->bindBuffers(std::vector<GLuint> { _color01SSBO, _color02SSBO });
+	_storeHQRTexture->use();
+	this->bindTexture();
+	_storeHQRTexture->setUniform("backgroundColor", _renderingParameters->_backgroundColor);
+	_storeHQRTexture->setUniform("texImage", GLint(0));
+	_storeHQRTexture->setUniform("windowSize", _windowSize);
+	_storeHQRTexture->execute(numGroupsImage, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
 }
 
 void PointCloudAggregator::writePointCloudGPU()

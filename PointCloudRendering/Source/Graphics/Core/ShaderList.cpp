@@ -4,6 +4,7 @@
 // [Static members initialization]
 
 std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
+		{RendEnum::ADD_COLORS_HQR, "Assets/Shaders/Compute/PointCloud/addColorsHQR"},
 		{RendEnum::BIT_MASK_RADIX_SORT, "Assets/Shaders/Compute/RadixSort/bitMask-radixSort"},
 		{RendEnum::BUILD_CLUSTER_BUFFER, "Assets/Shaders/Compute/BVHGeneration/buildClusterBuffer"},
 		{RendEnum::CLUSTER_MERGING, "Assets/Shaders/Compute/BVHGeneration/clusterMerging"},
@@ -21,13 +22,16 @@ std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
 		{RendEnum::PLANAR_SURFACE_GENERATION, "Assets/Shaders/Compute/PlanarSurface/planarSurfaceGeometryTopology"},
 		{RendEnum::PLANAR_SURFACE_TOPOLOGY, "Assets/Shaders/Compute/PlanarSurface/planarSurfaceFaces"},
 		{RendEnum::PROJECTION_SHADER, "Assets/Shaders/Compute/PointCloud/computeDepthBuffer"},
+		{RendEnum::PROJECTION_HQR_SHADER, "Assets/Shaders/Compute/PointCloud/computeDepthBufferHQR"},
 		{RendEnum::REALLOCATE_CLUSTERS, "Assets/Shaders/Compute/BVHGeneration/reallocateClusters"},
 		{RendEnum::REALLOCATE_RADIX_SORT, "Assets/Shaders/Compute/RadixSort/reallocateIndices-radixSort"},
 		{RendEnum::REDUCE_PREFIX_SCAN, "Assets/Shaders/Compute/PrefixScan/reduce-prefixScan"},
 		{RendEnum::RESET_BUFFER_INDEX, "Assets/Shaders/Compute/Generic/resetBufferIndex"},
 		{RendEnum::RESET_DEPTH_BUFFER_SHADER, "Assets/Shaders/Compute/PointCloud/resetDepthBuffer"},
+		{RendEnum::RESET_DEPTH_BUFFER_HQR_SHADER, "Assets/Shaders/Compute/PointCloud/resetDepthBufferHQR"},
 		{RendEnum::RESET_LAST_POSITION_PREFIX_SCAN, "Assets/Shaders/Compute/PrefixScan/resetLastPosition-prefixScan"},
 		{RendEnum::STORE_TEXTURE_SHADER, "Assets/Shaders/Compute/PointCloud/storeTexture"},
+		{RendEnum::STORE_TEXTURE_HQR_SHADER, "Assets/Shaders/Compute/PointCloud/storeTextureHQR"},
 };
 
 std::unordered_map<uint8_t, std::string> ShaderList::REND_SHADER_SOURCE {
