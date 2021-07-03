@@ -6,6 +6,7 @@
 #include "imnodes/imnodes.h"
 #include "implot/implot.h"
 
+#include "Graphics/Application/PointCloudScene.h"
 #include "Graphics/Application/Renderer.h"
 #include "Graphics/Application/RenderingParameters.h"
 #include "Interface/ForestEditorNode.h"
@@ -25,14 +26,17 @@ class GUI: public Singleton<GUI>
 	friend class Singleton<GUI>;
 
 protected:
+	PointCloudScene*				_pointCloudScene;					//!<
 	Renderer*						_renderer;							//!< Access to current scene
 	RenderingParameters*			_renderingParams;					//!< Reference to rendering parameters
 
 	// GUI state
+	std::string						_pointCloudPath;					//!<
 	bool							_showAboutUs;						//!< About us window
 	bool							_showControls;						//!< Shows application controls
 	bool							_showFileDialog;					//!< Shows a file dialog that allows opening a point cloud in .ply format
 	bool							_showForestEditor;					//!< Shows an editor where forest scene can be defined
+	bool							_showPointCloudDialog;				//!< 
 	bool							_showRenderingSettings;				//!< Displays a window which allows the user to modify the rendering parameters
 	bool							_showScreenshotSettings;			//!< Shows a window which allows to take an screenshot at any size
 
@@ -100,6 +104,11 @@ protected:
 	*	@brief Shows a menu to create new nodes at forest editor. 
 	*/
 	void showForestEditorMenu();
+
+	/**
+	*	@brief  
+	*/
+	void showPointCloudDialog();
 
 	/**
 	*	@brief Shows a window with general rendering configuration.

@@ -94,18 +94,21 @@ struct RendEnum
 		// Point cloud
 		ADD_COLORS_HQR,
 		COMPUTE_MORTON_CODES_PCL,
+		IOTA_SHADER,
+		REDUCE_POINT_BUFFER_SHADER,
 		RESET_DEPTH_BUFFER_SHADER,
 		RESET_DEPTH_BUFFER_HQR_SHADER,
 		PROJECTION_SHADER,
 		PROJECTION_HQR_SHADER,
 		STORE_TEXTURE_SHADER,
-		STORE_TEXTURE_HQR_SHADER
+		STORE_TEXTURE_HQR_SHADER,
+		TRANSFER_POINTS_SHADER
 	};
 
 	/**
 	*	@return Number of compute shaders.
 	*/
-	const static GLsizei numComputeShaderTypes() { return STORE_TEXTURE_HQR_SHADER + 1; }
+	const static GLsizei numComputeShaderTypes() { return TRANSFER_POINTS_SHADER + 1; }
 
 	/**
 	*	@return Number of rendering shaders.

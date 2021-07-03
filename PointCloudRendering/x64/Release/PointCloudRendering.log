@@ -1,8 +1,8 @@
-﻿  InputManager.cpp
+﻿  GUI.cpp
      Creando biblioteca D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exp
   Generando código
-  183 of 9443 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
+  2 of 9469 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    55 functions had inline decision re-evaluated but remain unchanged
+    54 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   PointCloudRendering.vcxproj -> D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exe

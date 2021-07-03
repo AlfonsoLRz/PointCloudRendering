@@ -1156,5 +1156,14 @@
     <None Include="Assets\Shaders\Compute\PointCloud\addColorsHQR-comp.glsl">
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\reducePointBuffer-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\iota-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\transferPoints-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
   </ItemGroup>
 </Project>

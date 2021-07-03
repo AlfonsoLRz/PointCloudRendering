@@ -54,6 +54,11 @@ protected:
 	*	@brief
 	*/
 	GLuint calculateMortonCodes(const GLuint pointsSSBO, unsigned numPoints);
+
+	/**
+	*	@brief  
+	*/
+	void deletePointCloudBuffers();
 	
 	/**
 	*	@brief Projects the point cloud SSBOs into a window plane. 
@@ -64,6 +69,11 @@ protected:
 	*	@brief Projects the point cloud SSBOs into a window plane.
 	*/
 	void projectPointCloudHQR(const mat4& projectionMatrix);
+
+	/**
+	*	@brief  
+	*/
+	void reducePointChunk(GLuint& pointsSSBO, const GLuint indexSSBO, unsigned& numPoints);
 
 	/**
 	*	@brief
@@ -99,7 +109,7 @@ public:
 	/**
 	*	@brief  
 	*/
-	PointCloudAggregator(PointCloud* pointCloud);
+	PointCloudAggregator();
 
 	/**
 	*	@brief Destructor. 
@@ -120,5 +130,10 @@ public:
 	*	@brief Triggers the rendering of a new frame. 
 	*/
 	void render(const mat4& projectionMatrix);
+
+	/**
+	*	@brief
+	*/
+	void setPointCloud(PointCloud* pointCloud);
 };
 

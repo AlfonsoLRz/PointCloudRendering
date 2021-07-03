@@ -15,6 +15,7 @@ layout (std430, binding = 2) buffer Color02Buffer	{ uint64_t		colorBuffer02[]; }
 layout (std430, binding = 3) buffer PointBuffer		{ PointModel	points[]; };
 
 uniform mat4	cameraMatrix;
+uniform float	distanceThreshold;
 uniform uint	numPoints;
 uniform uvec2	windowSize;
 
@@ -37,7 +38,7 @@ void main()
 	float depthInBuffer		= uintBitsToFloat(depthBuffer[pointIndex]);
 	uvec3 rgbColor			= uvec3(unpackUnorm4x8(points[index].rgb).rgb * 255.0f);
 
-	if (depth < depthInBuffer * 1.01f)			// Same surface
+	if (depth < depthInBuffer * distanceThreshold)			// Same surface
 	{
 		uint64_t rg = (uint64_t(rgbColor.r) << 32) | rgbColor.g;
 		uint64_t ba = (uint64_t(rgbColor.b) << 32) | 1;

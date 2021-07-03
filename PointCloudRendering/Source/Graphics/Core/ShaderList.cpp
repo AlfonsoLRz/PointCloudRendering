@@ -17,6 +17,7 @@ std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
 		{RendEnum::DOWN_SWEEP_PREFIX_SCAN, "Assets/Shaders/Compute/PrefixScan/downSweep-prefixScan"},
 		{RendEnum::END_LOOP_COMPUTATIONS, "Assets/Shaders/Compute/BVHGeneration/endLoopComputations"},
 		{RendEnum::FIND_BEST_NEIGHBOR, "Assets/Shaders/Compute/BVHGeneration/findBestNeighbor"},
+		{RendEnum::IOTA_SHADER, "Assets/Shaders/Compute/PointCloud/iota"},
 		{RendEnum::MODEL_APPLY_MODEL_MATRIX, "Assets/Shaders/Compute/Model/modelApplyModelMatrix"},
 		{RendEnum::MODEL_MESH_GENERATION, "Assets/Shaders/Compute/Model/modelMeshGeneration"},
 		{RendEnum::PLANAR_SURFACE_GENERATION, "Assets/Shaders/Compute/PlanarSurface/planarSurfaceGeometryTopology"},
@@ -25,6 +26,7 @@ std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
 		{RendEnum::PROJECTION_HQR_SHADER, "Assets/Shaders/Compute/PointCloud/computeDepthBufferHQR"},
 		{RendEnum::REALLOCATE_CLUSTERS, "Assets/Shaders/Compute/BVHGeneration/reallocateClusters"},
 		{RendEnum::REALLOCATE_RADIX_SORT, "Assets/Shaders/Compute/RadixSort/reallocateIndices-radixSort"},
+		{RendEnum::REDUCE_POINT_BUFFER_SHADER, "Assets/Shaders/Compute/PointCloud/reducePointBuffer"},
 		{RendEnum::REDUCE_PREFIX_SCAN, "Assets/Shaders/Compute/PrefixScan/reduce-prefixScan"},
 		{RendEnum::RESET_BUFFER_INDEX, "Assets/Shaders/Compute/Generic/resetBufferIndex"},
 		{RendEnum::RESET_DEPTH_BUFFER_SHADER, "Assets/Shaders/Compute/PointCloud/resetDepthBuffer"},
@@ -32,6 +34,7 @@ std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
 		{RendEnum::RESET_LAST_POSITION_PREFIX_SCAN, "Assets/Shaders/Compute/PrefixScan/resetLastPosition-prefixScan"},
 		{RendEnum::STORE_TEXTURE_SHADER, "Assets/Shaders/Compute/PointCloud/storeTexture"},
 		{RendEnum::STORE_TEXTURE_HQR_SHADER, "Assets/Shaders/Compute/PointCloud/storeTextureHQR"},
+		{RendEnum::TRANSFER_POINTS_SHADER, "Assets/Shaders/Compute/PointCloud/transferPoints"},
 };
 
 std::unordered_map<uint8_t, std::string> ShaderList::REND_SHADER_SOURCE {

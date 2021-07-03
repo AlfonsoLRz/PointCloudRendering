@@ -9,8 +9,8 @@
 
 // [Public methods]
 
-PointCloudAggregator::PointCloudAggregator(PointCloud* pointCloud) :
-	_pointCloud(pointCloud), _textureID(-1), _depthBufferSSBO(-1)
+PointCloudAggregator::PointCloudAggregator() :
+	_pointCloud(nullptr), _textureID(-1), _depthBufferSSBO(-1)
 {
 	ShaderList* shaderList	= ShaderList::getInstance();
 	Window* window			= Window::getInstance();
@@ -38,17 +38,11 @@ PointCloudAggregator::PointCloudAggregator(PointCloud* pointCloud) :
 	glBindTexture(GL_TEXTURE_2D, _textureID);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, _windowSize.x, _windowSize.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
 	glGenerateMipmap(GL_TEXTURE_2D);
-
-	this->writePointCloudGPU();
 }
 
 PointCloudAggregator::~PointCloudAggregator()
 {
-	for (GLuint ssbo: _pointCloudSSBO)
-	{
-		glDeleteBuffers(1, &ssbo);
-	}
-
+	this->deletePointCloudBuffers();
 	glDeleteBuffers(1, &_color01SSBO);
 	glDeleteBuffers(1, &_color02SSBO);
 	glDeleteBuffers(1, &_depthBufferSSBO);
@@ -82,6 +76,14 @@ void PointCloudAggregator::render(const mat4& projectionMatrix)
 	}
 }
 
+void PointCloudAggregator::setPointCloud(PointCloud* pointCloud)
+{
+	_pointCloud = pointCloud;
+
+	this->deletePointCloudBuffers();
+	this->writePointCloudGPU();
+}
+
 // [Protected methods]
 
 unsigned PointCloudAggregator::getAllowedNumberOfPoints()
@@ -113,6 +115,17 @@ GLuint PointCloudAggregator::calculateMortonCodes(const GLuint pointsSSBO, unsig
 	computeMortonShader->execute(numGroups, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
 
 	return mortonCodeBuffer;
+}
+
+void PointCloudAggregator::deletePointCloudBuffers()
+{
+	for (GLuint ssbo : _pointCloudSSBO)
+	{
+		glDeleteBuffers(1, &ssbo);
+	}
+
+	_pointCloudSSBO.clear();
+	_pointCloudChunkSize.clear();
 }
 
 void PointCloudAggregator::projectPointCloud(const mat4& projectionMatrix)
@@ -171,12 +184,59 @@ void PointCloudAggregator::projectPointCloudHQR(const mat4& projectionMatrix)
 		_addColorsHQRShader->bindBuffers(std::vector<GLuint> { _rawDepthBufferSSBO, _color01SSBO, _color02SSBO, pointsSSBO });
 		_addColorsHQRShader->use();
 		_addColorsHQRShader->setUniform("cameraMatrix", projectionMatrix);
+		_addColorsHQRShader->setUniform("distanceThreshold", PointCloudParameters::_distanceThreshold);
 		_addColorsHQRShader->setUniform("numPoints", numPoints);
 		_addColorsHQRShader->setUniform("windowSize", _windowSize);
 		_addColorsHQRShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
 
 		accumSize += _pointCloudChunkSize[chunk++];
 	}
+}
+
+void PointCloudAggregator::reducePointChunk(GLuint& pointsSSBO, const GLuint indexSSBO, unsigned& numPoints)
+{
+	ComputeShader* reduceShader			= ShaderList::getInstance()->getComputeShader(RendEnum::REDUCE_POINT_BUFFER_SHADER);
+	ComputeShader* iotaShader			= ShaderList::getInstance()->getComputeShader(RendEnum::IOTA_SHADER);
+	ComputeShader* transferPointsShader = ShaderList::getInstance()->getComputeShader(RendEnum::TRANSFER_POINTS_SHADER);
+	const int numGroups					= ComputeShader::getNumGroups(numPoints);
+	const GLuint nullCount				= 0;
+
+	GLuint countPointSSBO = ComputeShader::setReadBuffer(&numPoints, 1, GL_DYNAMIC_DRAW);
+	GLuint countPointAuxSSBO = ComputeShader::setReadBuffer(&nullCount, 1, GL_DYNAMIC_DRAW);
+
+	iotaShader->bindBuffers(std::vector<GLuint> { indexSSBO });
+	iotaShader->use();
+	iotaShader->setUniform("arraySize", numPoints);
+	iotaShader->execute(numGroups, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+	reduceShader->use();
+	reduceShader->setUniform("sceneMaxBoundary", _pointCloud->getAABB().max());
+	reduceShader->setUniform("sceneMinBoundary", _pointCloud->getAABB().min());
+	
+	for (int iteration = 0; iteration < PointCloudParameters::_reduceIterations; ++iteration)
+	{
+		reduceShader->bindBuffers(std::vector<GLuint> { pointsSSBO, indexSSBO, countPointSSBO, countPointAuxSSBO });
+		reduceShader->execute(numGroups, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+		std::swap(countPointSSBO, countPointAuxSSBO);
+		ComputeShader::updateReadBuffer(countPointAuxSSBO, &nullCount, 1, GL_DYNAMIC_DRAW);
+	}
+
+	numPoints = *ComputeShader::readData(countPointSSBO, GLint());
+	GLuint pointAuxSSBO = ComputeShader::setWriteBuffer(PointCloud::PointModel(), numPoints, GL_DYNAMIC_DRAW);
+
+	transferPointsShader->bindBuffers(std::vector<GLuint> { pointsSSBO, pointAuxSSBO, indexSSBO });
+	transferPointsShader->use();
+	transferPointsShader->setUniform("arraySize", numPoints);
+	transferPointsShader->execute(numGroups, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+	glDeleteBuffers(1, &pointsSSBO);
+	glDeleteBuffers(1, &countPointSSBO);
+	glDeleteBuffers(1, &countPointAuxSSBO);
+	pointsSSBO = pointAuxSSBO;
+
+	PointCloud::PointModel* pointPointer = ComputeShader::readData(pointsSSBO, PointCloud::PointModel());
+	std::vector<PointCloud::PointModel> testBuffer = std::vector<PointCloud::PointModel>(pointPointer, pointPointer + numPoints);
 }
 
 void PointCloudAggregator::sortPoints(const GLuint pointsSSBO, unsigned numPoints)
@@ -187,11 +247,12 @@ void PointCloudAggregator::sortPoints(const GLuint pointsSSBO, unsigned numPoint
 	GLuint* indices = ComputeShader::readData(indicesBufferSSBO, GLuint());
 	std::vector<GLuint> bufferIndices = std::vector<GLuint>(indices, indices + numPoints);
 
-	std::vector<PointCloud::PointModel>* previousPoints = _pointCloud->getPoints();
+	PointCloud::PointModel* previousPointsPointer = ComputeShader::readData(pointsSSBO, PointCloud::PointModel());
+	std::vector<PointCloud::PointModel> previousPoints = std::vector<PointCloud::PointModel>(previousPointsPointer, previousPointsPointer + numPoints);
 
 	for (int pointIdx = 0; pointIdx < numPoints; ++pointIdx)
 	{
-		_supportBuffer.at(pointIdx) = previousPoints->at(indices[pointIdx]);
+		_supportBuffer.at(pointIdx) = previousPoints.at(indices[pointIdx]);
 	}
 
 	ComputeShader::updateReadBuffer(pointsSSBO, _supportBuffer.data(), numPoints, GL_STATIC_DRAW);
@@ -339,23 +400,31 @@ void PointCloudAggregator::writeColorsTextureHQR()
 
 void PointCloudAggregator::writePointCloudGPU()
 {
-	unsigned currentNumPoints, leftPoints = _pointCloud->getNumberOfPoints();
-	const unsigned numPoints = std::min(this->getAllowedNumberOfPoints(), _pointCloud->getNumberOfPoints());
+	unsigned currentNumPoints, leftPoints = _pointCloud->getNumberOfPoints(), currentNumPointAux;
+	unsigned numPoints = std::min(this->getAllowedNumberOfPoints(), _pointCloud->getNumberOfPoints());
 	std::vector<PointCloud::PointModel>* points = _pointCloud->getPoints();
+	GLuint indexSSBO = ComputeShader::setWriteBuffer(GLuint(), numPoints, GL_DYNAMIC_DRAW);
 
 	while (leftPoints > 0)
 	{
-		currentNumPoints = std::min(numPoints, leftPoints);
+		currentNumPoints = std::min(numPoints, leftPoints), currentNumPointAux = currentNumPoints;
 
-		const GLuint pointBufferSSBO = ComputeShader::setReadBuffer(&(points->at(points->size() - leftPoints)), currentNumPoints, GL_DYNAMIC_DRAW);
-		_pointCloudSSBO.push_back(pointBufferSSBO);
-		_pointCloudChunkSize.push_back(currentNumPoints);
+		GLuint pointBufferSSBO = ComputeShader::setReadBuffer(&(points->at(points->size() - leftPoints)), currentNumPoints, GL_DYNAMIC_DRAW);
 
-		if (true)
+		if (PointCloudParameters::_reducePointCloud)
 		{
-			this->sortPoints(pointBufferSSBO, currentNumPoints);
+			this->reducePointChunk(pointBufferSSBO, indexSSBO, currentNumPointAux);
 		}
 
+		if (PointCloudParameters::_sortPointCloud)
+		{
+			this->sortPoints(pointBufferSSBO, currentNumPointAux);
+		}
+
+		_pointCloudSSBO.push_back(pointBufferSSBO);
+		_pointCloudChunkSize.push_back(currentNumPointAux);
 		leftPoints -= currentNumPoints;
 	}
+
+	glDeleteBuffers(1, &indexSSBO);
 }

@@ -17,7 +17,8 @@ const std::string PointCloudScene::POINT_CLOUD_FILE = "Assets/Models/PointCloudS
 PointCloudScene::PointCloudScene() : _pointCloud(nullptr), _pointCloudAggregator(nullptr)
 {
 	ShaderList* shaderList = ShaderList::getInstance();
-	
+
+	_pointCloudAggregator = new PointCloudAggregator();
 	_quadRenderer = shaderList->getRenderingShader(RendEnum::DEBUG_QUAD_SHADER);
 	_quadVAO = Primitives::getQuadVAO();
 }
@@ -26,6 +27,17 @@ PointCloudScene::~PointCloudScene()
 {
 	delete _pointCloud;
 	delete _pointCloudAggregator;
+}
+
+bool PointCloudScene::loadPointCloud(const std::string& path)
+{
+	delete _pointCloud;
+	
+	_pointCloud = new PointCloud(path, true);
+	if (!_pointCloud->load()) return false;
+	_pointCloudAggregator->setPointCloud(_pointCloud);
+
+	return true;
 }
 
 void PointCloudScene::modifySize(const uint16_t width, const uint16_t height)
@@ -37,8 +49,7 @@ void PointCloudScene::modifySize(const uint16_t width, const uint16_t height)
 
 void PointCloudScene::render(const mat4& mModel, RenderingParameters* rendParams)
 {
-	this->bindDefaultFramebuffer(rendParams);
-	
+	this->bindDefaultFramebuffer(rendParams);	
 	this->renderPointCloud(mModel, rendParams);
 }
 
@@ -84,10 +95,7 @@ void PointCloudScene::loadModels()
 {
 	{
 		_sceneGroup = new Group3D;
-		
-		_pointCloud = new PointCloud(POINT_CLOUD_FILE, true);
-		_pointCloud->load();
-		_pointCloudAggregator = new PointCloudAggregator(_pointCloud);
+		_pointCloudAggregator = new PointCloudAggregator();
 	}
 	
 	SSAOScene::loadModels();

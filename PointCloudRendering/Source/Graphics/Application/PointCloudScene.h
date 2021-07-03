@@ -78,6 +78,11 @@ public:
 	virtual ~PointCloudScene();
 
 	/**
+	*	@return True if the point cloud was successfully loaded.
+	*/
+	bool loadPointCloud(const std::string& path);
+
+	/**
 	*	@brief Resize event.
 	*	@param width New canvas width.
 	*	@param height New canvas height.

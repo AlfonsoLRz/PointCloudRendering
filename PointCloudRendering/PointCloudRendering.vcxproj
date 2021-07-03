@@ -296,10 +296,13 @@
     <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\computeDepthBufferHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\computeMortonCodes-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\iota-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\reducePointBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\resetDepthBufferHQR-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\storeTexture-comp.glsl" />
     <None Include="Assets\Shaders\Compute\PointCloud\storeTextureHQR-comp.glsl" />
+    <None Include="Assets\Shaders\Compute\PointCloud\transferPoints-comp.glsl" />
     <None Include="Assets\Shaders\Compute\RadixSort\bitMask-radixSort-comp.glsl" />
     <None Include="Assets\Shaders\Compute\BVHGeneration\buildClusterBuffer-comp.glsl" />
     <None Include="Assets\Shaders\Compute\BVHGeneration\clusterMerging-comp.glsl" />

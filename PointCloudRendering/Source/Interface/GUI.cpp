@@ -11,10 +11,12 @@
 /// [Protected methods]
 
 GUI::GUI() :
-	_showRenderingSettings(false), _showScreenshotSettings(false), _showAboutUs(false), _showControls(false), _showFileDialog(false)
+	_pointCloudPath(""), _showRenderingSettings(false), _showScreenshotSettings(false), _showAboutUs(false),
+	_showControls(false), _showFileDialog(false), _showPointCloudDialog(false)
 {
 	_renderer			= Renderer::getInstance();	
 	_renderingParams	= Renderer::getInstance()->getRenderingParameters();
+	_pointCloudScene	= dynamic_cast<PointCloudScene*>(_renderer->getCurrentScene());
 
 	for (int nodeIdx = 0; nodeIdx < ForestEditorNode::NUM_NODE_TYPES; ++nodeIdx)
 	{
@@ -39,6 +41,7 @@ void GUI::createMenu()
 	if (_showControls)				showControls();
 	if (_showForestEditor)			showForestEditor();
 	if (_showFileDialog)			showFileDialog();
+	if (_showPointCloudDialog)		showPointCloudDialog();
 
 	if (ImGui::BeginMainMenuBar())
 	{
@@ -143,8 +146,8 @@ void GUI::showFileDialog()
 		if (ImGuiFileDialog::Instance()->IsOk())
 		{
 			std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-			std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-			// action
+			_pointCloudPath = filePathName.substr(0, filePathName.find_last_of("."));
+			_showPointCloudDialog = true;
 		}
 
 		// close
@@ -237,6 +240,44 @@ void GUI::showForestEditorMenu()
 	ImGui::PopStyleVar();
 }
 
+void GUI::showPointCloudDialog()
+{
+	if (ImGui::Begin("Open Point Cloud Dialog", &_showPointCloudDialog))
+	{
+		GLuint minIterations = 1, maxIterations = 4;
+		
+		this->leaveSpace(1);
+
+		ImGui::Text("Open point cloud");
+		ImGui::Separator();
+
+		this->leaveSpace(1);
+		
+		ImGui::Checkbox("Order (Radix Sort)", &PointCloudParameters::_sortPointCloud);
+		ImGui::Checkbox("Reduce Size", &PointCloudParameters::_reducePointCloud);
+		ImGui::SameLine(0, 80); ImGui::PushItemWidth(150.0f);
+		ImGui::SliderScalar("Iterations", ImGuiDataType_U16, &PointCloudParameters::_reduceIterations, &minIterations, &maxIterations);
+		ImGui::PopItemWidth();
+
+		ImGui::PushID(0);
+		ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(1 / 7.0f, 0.6f, 0.6f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(1 / 7.0f, 0.7f, 0.7f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(1 / 7.0f, 0.8f, 0.8f));
+
+		this->leaveSpace(2);
+
+		if (ImGui::Button("Open Point Cloud"))
+		{
+			_pointCloudScene->loadPointCloud(_pointCloudPath);
+		}
+
+		ImGui::PopStyleColor(3);
+		ImGui::PopID();
+	}
+
+	ImGui::End();
+}
+
 void GUI::showRenderingSettings()
 {
 	if (ImGui::Begin("Rendering Settings", &_showRenderingSettings))
@@ -298,7 +339,8 @@ void GUI::showRenderingSettings()
 				ImGui::SliderFloat("Point Size", &_renderingParams->_scenePointSize, 0.1f, 50.0f);
 				ImGui::ColorEdit3("Point Cloud Color", &_renderingParams->_scenePointCloudColor[0]);
 				ImGui::Checkbox("HQR Rendering Optimization", &PointCloudParameters::_enableHQR);
-
+				ImGui::SliderFloat("Depth Threshold", &PointCloudParameters::_distanceThreshold, 1.0f, 1.2f, "%.6f");
+				
 				ImGui::EndTabItem();
 			}
 
