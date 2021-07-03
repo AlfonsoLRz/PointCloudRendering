@@ -1,7 +1,9 @@
-﻿  GUI.cpp
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': redefinición de macro
+C:\Users\AlfonsoLópezRuiz\Desktop\Libraries\glfw\include\GLFW\glfw3.h(104): message : vea la definición anterior de 'APIENTRY'
      Creando biblioteca D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exp
   Generando código
-  2 of 9469 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  3 of 9456 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     54 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada

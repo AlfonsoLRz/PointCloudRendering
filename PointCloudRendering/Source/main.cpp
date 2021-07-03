@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
 {
 	srand(time(nullptr));
 	
-	std::cout << "__ Starting LiDAR Simulator __" << std::endl;
+	std::cout << "__ Starting Point Cloud Renderer __" << std::endl;
 
-	const std::string title = "LiDAR Simulator";
+	const std::string title = "Point Cloud Renderer";
 	const uint16_t width = 1050, height = 650;
 	const auto window = Window::getInstance();
 	
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		{
 			window->startRenderingCycle();
 
-			std::cout << "__ Finishing LiDAR Simulator __" << std::endl;
+			std::cout << "__ Point Cloud Renderer __" << std::endl;
 		}
 		else
 		{

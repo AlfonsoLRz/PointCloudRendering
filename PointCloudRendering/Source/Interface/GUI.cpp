@@ -269,6 +269,7 @@ void GUI::showPointCloudDialog()
 		if (ImGui::Button("Open Point Cloud"))
 		{
 			_pointCloudScene->loadPointCloud(_pointCloudPath);
+			_showPointCloudDialog = false;
 		}
 
 		ImGui::PopStyleColor(3);

@@ -234,9 +234,6 @@ void PointCloudAggregator::reducePointChunk(GLuint& pointsSSBO, const GLuint ind
 	glDeleteBuffers(1, &countPointSSBO);
 	glDeleteBuffers(1, &countPointAuxSSBO);
 	pointsSSBO = pointAuxSSBO;
-
-	PointCloud::PointModel* pointPointer = ComputeShader::readData(pointsSSBO, PointCloud::PointModel());
-	std::vector<PointCloud::PointModel> testBuffer = std::vector<PointCloud::PointModel>(pointPointer, pointPointer + numPoints);
 }
 
 void PointCloudAggregator::sortPoints(const GLuint pointsSSBO, unsigned numPoints)
@@ -247,12 +244,19 @@ void PointCloudAggregator::sortPoints(const GLuint pointsSSBO, unsigned numPoint
 	GLuint* indices = ComputeShader::readData(indicesBufferSSBO, GLuint());
 	std::vector<GLuint> bufferIndices = std::vector<GLuint>(indices, indices + numPoints);
 
-	PointCloud::PointModel* previousPointsPointer = ComputeShader::readData(pointsSSBO, PointCloud::PointModel());
-	std::vector<PointCloud::PointModel> previousPoints = std::vector<PointCloud::PointModel>(previousPointsPointer, previousPointsPointer + numPoints);
+	PointCloud::PointModel* previousPoints;
+	if (PointCloudParameters::_reducePointCloud)
+	{
+		previousPoints = ComputeShader::readData(pointsSSBO, PointCloud::PointModel());
+	}
+	else
+	{
+		previousPoints = _pointCloud->getPoints()->data();
+	}
 
 	for (int pointIdx = 0; pointIdx < numPoints; ++pointIdx)
 	{
-		_supportBuffer.at(pointIdx) = previousPoints.at(indices[pointIdx]);
+		_supportBuffer.at(pointIdx) = previousPoints[indices[pointIdx]];
 	}
 
 	ComputeShader::updateReadBuffer(pointsSSBO, _supportBuffer.data(), numPoints, GL_STATIC_DRAW);
