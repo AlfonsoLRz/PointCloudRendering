@@ -37,6 +37,8 @@ bool PointCloudScene::loadPointCloud(const std::string& path)
 	if (!_pointCloud->load()) return false;
 	_pointCloudAggregator->setPointCloud(_pointCloud);
 
+	this->loadDefaultCamera(_cameraManager->getActiveCamera());
+
 	return true;
 }
 
@@ -72,8 +74,16 @@ void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rend
 
 void PointCloudScene::loadDefaultCamera(Camera* camera)
 {
-	camera->setPosition(vec3(3.0f, 3.338f, 2.94f));
-	camera->setLookAt(vec3(-5.31f, 1.65f, -2.57f));
+	if (_pointCloud)
+	{
+		camera->setPosition(_pointCloud->getAABB().center() + _pointCloud->getAABB().extent() * 1.5f);
+		camera->setLookAt(_pointCloud->getAABB().center());
+	}
+	else
+	{
+		camera->setPosition(vec3(3.0f, 3.338f, 2.94f));
+		camera->setLookAt(vec3(-5.31f, 1.65f, -2.57f));
+	}
 }
 
 void PointCloudScene::loadCameras()

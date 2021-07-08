@@ -21,9 +21,9 @@ Scene::~Scene()
 
 void Scene::load()
 {
-	this->loadCameras();
 	this->loadLights();
 	this->loadModels();
+	this->loadCameras();
 }
 
 void Scene::modifyNextFramebufferID(const GLuint fboID)

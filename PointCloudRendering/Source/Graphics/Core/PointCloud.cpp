@@ -82,7 +82,8 @@ bool PointCloud::loadModelFromPLY(const mat4& modelMatrix)
 	std::vector<uint8_t> byteBuffer;
 	std::shared_ptr<tinyply::PlyData> plyPoints, plyColors;
 	unsigned baseIndex;
-	float* pointsRaw;
+	float* pointsRawFloat = nullptr;
+	double* pointsRawDouble = nullptr;
 	uint8_t* colorsRaw;
 
 	try
@@ -108,29 +109,50 @@ bool PointCloud::loadModelFromPLY(const mat4& modelMatrix)
 		file.read(*fileStream);
 
 		{
+			const bool isDouble = plyPoints->t == tinyply::Type::FLOAT64;
 			const size_t numPoints = plyPoints->count;
-			const size_t numPointsBytes = numPoints * 4 * 3;
+			const size_t numPointsBytes = numPoints * (!isDouble ? sizeof(float) : sizeof(double)) * 3;
 
 			const size_t numColors = plyColors->count;
 			const size_t numColorsBytes = numColors * 1 * 3;
 
 			// Allocate space
 			_points.resize(numPoints);
-			pointsRaw = new float[numPoints * 3];
+			if (!isDouble)
+			{
+				pointsRawFloat = new float[numPoints * 3];
+				std::memcpy(pointsRawFloat, plyPoints->buffer.get(), numPointsBytes);
+			}
+			else
+			{
+				pointsRawDouble = new double[numPoints * 3];
+				std::memcpy(pointsRawDouble, plyPoints->buffer.get(), numPointsBytes);
+			}
 			colorsRaw = new uint8_t[numColors * 3];
-
-			std::memcpy(pointsRaw, plyPoints->buffer.get(), numPointsBytes);
+			
 			std::memcpy(colorsRaw, plyColors->buffer.get(), numColorsBytes);
 
-			unsigned count = 0;
-
-			for (unsigned index = 0; index < numPoints; ++index)
+			if (!isDouble)
 			{
-				baseIndex = index * 3;
+				for (unsigned index = 0; index < numPoints; ++index)
+				{
+					baseIndex = index * 3;
 
-				_points[index] = PointModel{ vec3(pointsRaw[baseIndex], pointsRaw[baseIndex + 1], pointsRaw[baseIndex + 2]),
-										     PointModel::getRGBColor(vec3(colorsRaw[baseIndex], colorsRaw[baseIndex + 1], colorsRaw[baseIndex + 2])) };
-				_aabb.update(_points[index]._point);
+					_points[index] = PointModel{ vec3(pointsRawFloat[baseIndex], pointsRawFloat[baseIndex + 1], pointsRawFloat[baseIndex + 2]),
+												 PointModel::getRGBColor(vec3(colorsRaw[baseIndex], colorsRaw[baseIndex + 1], colorsRaw[baseIndex + 2])) };
+					_aabb.update(_points[index]._point);
+				}
+			}
+			else
+			{
+				for (unsigned index = 0; index < numPoints; ++index)
+				{
+					baseIndex = index * 3;
+
+					_points[index] = PointModel{ vec3(pointsRawDouble[baseIndex], pointsRawDouble[baseIndex + 1], pointsRawDouble[baseIndex + 2]),
+												 PointModel::getRGBColor(vec3(colorsRaw[baseIndex], colorsRaw[baseIndex + 1], colorsRaw[baseIndex + 2])) };
+					_aabb.update(_points[index]._point);
+				}
 			}
 		}
 	}
