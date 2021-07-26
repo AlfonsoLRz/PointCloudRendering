@@ -1,3 +1,0 @@
-﻿     Creando biblioteca D:\Github\PointCloudRendering\x64\Debug\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Debug\PointCloudRendering.exp
-LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
-  PointCloudRendering.vcxproj -> D:\Github\PointCloudRendering\x64\Debug\PointCloudRendering.exe
