@@ -103,7 +103,6 @@
     <ClInclude Include="Source\Interface\Fonts\font_awesome.hpp" />
     <ClInclude Include="Source\Interface\Fonts\IconsFontAwesome5.h" />
     <ClInclude Include="Source\Interface\Fonts\lato.hpp" />
-    <ClInclude Include="Source\Interface\ForestEditorNode.h" />
     <ClInclude Include="Source\Interface\GUI.h" />
     <ClInclude Include="Source\Interface\InputManager.h" />
     <ClInclude Include="Source\Interface\Window.h" />
@@ -252,7 +251,6 @@
     <ClCompile Include="Source\Interface\Fonts\font_awesome.cpp" />
     <ClCompile Include="Source\Interface\Fonts\font_awesome_2.cpp" />
     <ClCompile Include="Source\Interface\Fonts\lato.cpp" />
-    <ClCompile Include="Source\Interface\ForestEditorNode.cpp" />
     <ClCompile Include="Source\Interface\GUI.cpp" />
     <ClCompile Include="Source\Interface\InputManager.cpp" />
     <ClCompile Include="Source\Interface\Window.cpp" />

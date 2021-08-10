@@ -3,13 +3,11 @@
 #include "imgui/imgui.h"
 #include "imgui/examples/imgui_impl_glfw.h"
 #include "imgui/examples/imgui_impl_opengl3.h"
-#include "imnodes/imnodes.h"
 #include "implot/implot.h"
 
 #include "Graphics/Application/PointCloudScene.h"
 #include "Graphics/Application/Renderer.h"
 #include "Graphics/Application/RenderingParameters.h"
-#include "Interface/ForestEditorNode.h"
 #include "Utilities/Singleton.h"
 
 /**
@@ -35,25 +33,15 @@ protected:
 	bool							_showAboutUs;						//!< About us window
 	bool							_showControls;						//!< Shows application controls
 	bool							_showFileDialog;					//!< Shows a file dialog that allows opening a point cloud in .ply format
-	bool							_showForestEditor;					//!< Shows an editor where forest scene can be defined
 	bool							_showPointCloudDialog;				//!< 
 	bool							_showRenderingSettings;				//!< Displays a window which allows the user to modify the rendering parameters
 	bool							_showScreenshotSettings;			//!< Shows a window which allows to take an screenshot at any size
-
-	// Forest Editor
-	std::vector<ForestEditorNode*>  _forestNode;						//!<
-	ForestEditorNode::LinkMap		_nodeLinks;							//!<
 
 protected:
 	/**
 	*	@brief Constructor of GUI context provided by a graphics library (Dear ImGui).
 	*/
 	GUI();
-
-	/**
-	*	@brief Initializes new ImNodes node for forest editor.
-	*/
-	void addForestNode(const int id, const ImVec2& position);
 	
 	/**
 	*	@brief Creates the navbar.
@@ -94,16 +82,6 @@ protected:
 	*	@brief Displays a file dialog to open a new point cloud (.ply).
 	*/
 	void showFileDialog();
-
-	/**
-	*	@brief Displays a node editor to specify a procedural forest scene. 
-	*/
-	void showForestEditor();
-
-	/**
-	*	@brief Shows a menu to create new nodes at forest editor. 
-	*/
-	void showForestEditorMenu();
 
 	/**
 	*	@brief  

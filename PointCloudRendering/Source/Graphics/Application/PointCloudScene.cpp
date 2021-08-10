@@ -31,13 +31,16 @@ PointCloudScene::~PointCloudScene()
 
 bool PointCloudScene::loadPointCloud(const std::string& path)
 {
-	delete _pointCloud;
+	bool nullPointCloud = _pointCloud == nullptr;
 	
+	delete _pointCloud;
 	_pointCloud = new PointCloud(path, true);
 	if (!_pointCloud->load()) return false;
 	_pointCloudAggregator->setPointCloud(_pointCloud);
 
-	this->loadDefaultCamera(_cameraManager->getActiveCamera());
+	if (nullPointCloud) this->loadDefaultCamera(_cameraManager->getActiveCamera());
+
+	std::cout << _pointCloud->getNumberOfPoints() << std::endl;
 
 	return true;
 }
@@ -59,7 +62,6 @@ void PointCloudScene::render(const mat4& mModel, RenderingParameters* rendParams
 
 void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rendParams)
 {
-	Texture* texture			= TextureList::getInstance()->getTexture(CGAppEnum::TEXTURE_LIDAR_HEIGHT);
 	Camera* activeCamera		= _cameraManager->getActiveCamera();
 	const mat4 projectionMatrix = activeCamera->getViewProjMatrix() * mModel;
 

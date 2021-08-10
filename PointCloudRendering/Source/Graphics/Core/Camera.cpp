@@ -339,10 +339,6 @@ void Camera::copyCameraAttributes(const Camera* camera)
 	this->_zNear	= camera->_zNear;
 	this->_zFar		= camera->_zFar;
 
-	this->_aspect	= camera->_aspect;
-	this->_width	= camera->_width;
-	this->_height	= camera->_height;
-
 	this->_n		= camera->_n;
 	this->_u		= camera->_u;
 	this->_v		= camera->_v;

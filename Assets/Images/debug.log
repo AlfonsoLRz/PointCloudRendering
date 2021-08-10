@@ -1,1 +1,4 @@
 [0705/180552.042:ERROR:media_internals.cc(112)] Cannot get RenderProcessHost
+[0810/173509.819:INFO:CONSOLE(1)] "Long rAF frame-time", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202021%20(Prerelease)/Required/www-rich-tooltips/build/external.js (1)
+[0810/180403.848:INFO:CONSOLE(1)] "Hiding message due to error: CActionControl::Get failed with error: -25920 msg: error: -25920 message: No se ha podido cumplir porque el comando no estaba disponible.", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%202021%20(Prerelease)/Required/www-butler/build/spaces.js (1)
+[0810/180407.803:ERROR:media_internals.cc(112)] Cannot get RenderProcessHost

@@ -17,18 +17,6 @@ GUI::GUI() :
 	_renderer			= Renderer::getInstance();	
 	_renderingParams	= Renderer::getInstance()->getRenderingParameters();
 	_pointCloudScene	= dynamic_cast<PointCloudScene*>(_renderer->getCurrentScene());
-
-	for (int nodeIdx = 0; nodeIdx < ForestEditorNode::NUM_NODE_TYPES; ++nodeIdx)
-	{
-		_forestNode.push_back(nullptr);
-	}
-	_forestNode[ForestEditorNode::SCENE_ROOT] = new ForestEditorNode(ForestEditorNode::SCENE_ROOT);
-}
-
-void GUI::addForestNode(const int id, const ImVec2& position)
-{
-	imnodes::SetNodeScreenSpacePos(id, position);
-	_forestNode[id] = new ForestEditorNode(static_cast<ForestEditorNode::ForestNodeType>(id));
 }
 
 void GUI::createMenu()
@@ -39,7 +27,6 @@ void GUI::createMenu()
 	if (_showScreenshotSettings)	showScreenshotSettings();
 	if (_showAboutUs)				showAboutUsWindow();
 	if (_showControls)				showControls();
-	if (_showForestEditor)			showForestEditor();
 	if (_showFileDialog)			showFileDialog();
 	if (_showPointCloudDialog)		showPointCloudDialog();
 
@@ -50,12 +37,6 @@ void GUI::createMenu()
 			ImGui::MenuItem(ICON_FA_CUBE "Rendering", NULL, &_showRenderingSettings);
 			ImGui::MenuItem(ICON_FA_IMAGE "Screenshot", NULL, &_showScreenshotSettings);
 			ImGui::MenuItem(ICON_FA_SAVE "Open Point Cloud", NULL, &_showFileDialog);
-			ImGui::EndMenu();
-		}
-
-		if (ImGui::BeginMenu(ICON_FA_EDIT "Editor"))
-		{
-			ImGui::MenuItem(ICON_FA_TREE "Forest Scene", NULL, &_showForestEditor);
 			ImGui::EndMenu();
 		}
 
@@ -154,90 +135,6 @@ void GUI::showFileDialog()
 		ImGuiFileDialog::Instance()->Close();
 		_showFileDialog = false;
 	}
-}
-
-void GUI::showForestEditor()
-{
-	if (ImGui::Begin("Forest Editor", &_showForestEditor))
-	{
-		if (ImGui::Button(ICON_FA_SAVE "Save Graph"))
-		{
-			ForestEditorNode::saveDescriptionToBinary();
-		}
-
-		this->leaveSpace(1);
-
-		imnodes::BeginNodeEditor();
-
-		this->showForestEditorMenu();
-
-		for (ForestEditorNode* node : _forestNode)
-		{
-			if (node) node->drawNode();
-		}
-
-		for (int linkIdx = 0; linkIdx < _nodeLinks.size(); ++linkIdx)
-		{
-			const std::pair<int, int> pair = _nodeLinks[linkIdx];
-			imnodes::Link(linkIdx, pair.first, pair.second);
-		}
-		
-		imnodes::EndNodeEditor();
-
-		// Check links once editor is finished
-		{
-
-			for (ForestEditorNode* node : _forestNode)
-			{
-				if (node) node->updateLinks(_nodeLinks);
-			}
-		}
-	}
-
-	ImGui::End();
-}
-
-void GUI::showForestEditorMenu()
-{
-	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(4, 4));
-	
-	if (ImGui::BeginPopupContextWindow("Add Forest Nodes", 1, false))
-	{
-		const ImVec2 clickPosition = ImGui::GetMousePosOnOpeningCurrentPopup();
-
-		if (ImGui::BeginMenu("Basic Nodes"))
-		{
-			for (int nodeTypeIdx = ForestEditorNode::TERRAIN_SURFACE; nodeTypeIdx < ForestEditorNode::NUM_NODE_TYPES; ++nodeTypeIdx)
-			{
-				if (ImGui::MenuItem(ForestEditorNode::_forestNodeName[nodeTypeIdx]))
-				{
-					if (!_forestNode[nodeTypeIdx])
-					{
-						this->addForestNode(nodeTypeIdx, clickPosition);
-					}
-				}
-			}
-			
-			ImGui::EndMenu();
-		}
-
-		if (ImGui::BeginMenu("Noise"))
-		{
-			for (int nodeTypeIdx = ForestEditorNode::NOISE_SIMPLEX; nodeTypeIdx < ForestEditorNode::TERRAIN_SURFACE; ++nodeTypeIdx)
-			{
-				if (ImGui::MenuItem(ForestEditorNode::_forestNodeName[nodeTypeIdx]))
-				{
-					this->addForestNode(nodeTypeIdx, clickPosition);
-				}
-			}
-			
-			ImGui::EndMenu();
-		}
-
-		ImGui::EndPopup();
-	}
-
-	ImGui::PopStyleVar();
 }
 
 void GUI::showPointCloudDialog()
@@ -400,12 +297,6 @@ void GUI::showScreenshotSettings()
 
 GUI::~GUI()
 {
-	for (int nodeIdx = 0; nodeIdx < ForestEditorNode::NUM_NODE_TYPES; ++nodeIdx)
-	{
-		delete _forestNode[nodeIdx];
-	}
-
-	imnodes::Shutdown();
 	ImPlot::DestroyContext();
 	ImGui::DestroyContext();
 }
@@ -419,8 +310,6 @@ void GUI::initialize(GLFWwindow* window, const int openGLMinorVersion)
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImPlot::CreateContext();
-	imnodes::Initialize();
-	ForestEditorNode::initializeTextures();
 
 	this->loadImGUIStyle();
 	

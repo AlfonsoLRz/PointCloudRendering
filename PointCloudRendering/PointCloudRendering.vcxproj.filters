@@ -528,9 +528,6 @@
     <ClInclude Include="Source\Graphics\Core\PointCloudAggregator.h">
       <Filter>Archivos de encabezado\Graphics\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Interface\ForestEditorNode.h">
-      <Filter>Archivos de encabezado\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\Core\PointCloud.h">
       <Filter>Archivos de encabezado\Graphics\Core</Filter>
     </ClInclude>
@@ -766,9 +763,6 @@
     </ClCompile>
     <ClCompile Include="Libraries\imnodes\imnodes.cpp">
       <Filter>Archivos de origen\ImportedLibraries\imnodes</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Interface\ForestEditorNode.cpp">
-      <Filter>Archivos de origen\Interface</Filter>
     </ClCompile>
     <ClCompile Include="Source\Graphics\Core\Antialiser.cpp">
       <Filter>Archivos de origen\Graphics\Core</Filter>
