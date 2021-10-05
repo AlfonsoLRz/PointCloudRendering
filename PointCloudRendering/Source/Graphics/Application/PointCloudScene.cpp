@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <regex>
+#include "Graphics/Application/Renderer.h"
 #include "Graphics/Application/TextureList.h"
 #include "Graphics/Core/CADModel.h"
 #include "Graphics/Core/Light.h"
@@ -38,7 +39,7 @@ bool PointCloudScene::loadPointCloud(const std::string& path)
 	if (!_pointCloud->load()) return false;
 	_pointCloudAggregator->setPointCloud(_pointCloud);
 
-	if (nullPointCloud) this->loadDefaultCamera(_cameraManager->getActiveCamera());
+	if (Renderer::getInstance()->getRenderingParameters()->_updateCamera) this->loadDefaultCamera(_cameraManager->getActiveCamera());
 
 	std::cout << _pointCloud->getNumberOfPoints() << std::endl;
 

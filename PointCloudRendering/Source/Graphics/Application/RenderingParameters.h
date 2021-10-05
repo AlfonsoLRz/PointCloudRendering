@@ -48,6 +48,7 @@ public:
 	bool							_showBVH;								//!< Render BVH data structure
 	bool							_showTerrainRegularGrid;				//!< Shows a grid with the saturation level of a regular grid
 	bool							_showTriangleMesh;						//!< Render original scene
+	bool							_updateCamera;							//!< Updates camera accordingly to scene AABB
 
 public:
 	/**
@@ -78,7 +79,8 @@ public:
 		_bvhNodesPercentage(1.0f),
 		_showBVH(false),
 		_showTerrainRegularGrid(false),
-		_showTriangleMesh(true)
+		_showTriangleMesh(true),
+		_updateCamera(true)
 	{
 	}
 };

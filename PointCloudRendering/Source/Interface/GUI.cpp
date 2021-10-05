@@ -154,6 +154,7 @@ void GUI::showPointCloudDialog()
 		ImGui::Checkbox("Reduce Size", &PointCloudParameters::_reducePointCloud);
 		ImGui::SameLine(0, 80); ImGui::PushItemWidth(150.0f);
 		ImGui::SliderScalar("Iterations", ImGuiDataType_U16, &PointCloudParameters::_reduceIterations, &minIterations, &maxIterations);
+		ImGui::Checkbox("Update camera", &_renderingParams->_updateCamera);
 		ImGui::PopItemWidth();
 
 		ImGui::PushID(0);

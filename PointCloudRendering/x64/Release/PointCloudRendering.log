@@ -1,0 +1,24 @@
+﻿  PointCloudScene.cpp
+  Renderer.cpp
+  SSAOScene.cpp
+  Scene.cpp
+  Antialiser.cpp
+  FBOScreenshot.cpp
+  Group3D.cpp
+  Light.cpp
+  Model3D.cpp
+  PointCloud.cpp
+  PointCloudAggregator.cpp
+  SSAOFBO.cpp
+  ShaderList.cpp
+  ShadowMap.cpp
+  GUI.cpp
+  InputManager.cpp
+  Window.cpp
+     Creando biblioteca D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exp
+  Generando código
+  264 of 8963 functions ( 2.9%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    103 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  PointCloudRendering.vcxproj -> D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exe

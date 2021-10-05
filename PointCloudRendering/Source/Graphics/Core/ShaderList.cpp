@@ -38,17 +38,11 @@ std::unordered_map<uint8_t, std::string> ShaderList::COMP_SHADER_SOURCE {
 };
 
 std::unordered_map<uint8_t, std::string> ShaderList::REND_SHADER_SOURCE {
-		{RendEnum::BLUR_SSAO_SHADER, "Assets/Shaders/2D/blurSSAOShader"},
 		{RendEnum::DEBUG_QUAD_SHADER, "Assets/Shaders/Triangles/debugQuad"},
 		{RendEnum::POINT_CLOUD_SHADER, "Assets/Shaders/Points/pointCloud"},
 		{RendEnum::TRIANGLE_MESH_SHADER, "Assets/Shaders/Triangles/triangleMesh"},
-		{RendEnum::TRIANGLE_MESH_GROUP_SHADER, "Assets/Shaders/Triangles/triangleMeshGroup"},
-		{RendEnum::TRIANGLE_MESH_NORMAL_SHADER, "Assets/Shaders/Triangles/triangleMeshNormal"},
 		{RendEnum::TRIANGLE_MESH_POSITION_SHADER, "Assets/Shaders/Triangles/triangleMeshPosition"},
-		{RendEnum::WIREFRAME_SHADER, "Assets/Shaders/Lines/wireframe"},
-		{RendEnum::REFLECTIVE_TRIANGLE_MESH_SHADER, "Assets/Shaders/Triangles/reflectiveTriangleMesh"},
-		{RendEnum::SHADOWS_SHADER, "Assets/Shaders/Triangles/shadowsShader"},
-		{RendEnum::SSAO_SHADER, "Assets/Shaders/2D/ssaoShader"},
+		{RendEnum::WIREFRAME_SHADER, "Assets/Shaders/Lines/wireframe"}
 };
 
 std::vector<std::unique_ptr<ComputeShader>> ShaderList::_computeShader (RendEnum::numComputeShaderTypes());
