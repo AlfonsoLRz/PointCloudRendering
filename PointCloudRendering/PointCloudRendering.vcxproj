@@ -428,7 +428,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Source;Source/PrecompiledHeaders;%userprofile%/Desktop/Libraries/glew/include;%userprofile%/Desktop/Libraries/glm;%userprofile%/Desktop/Libraries/glfw/include;%userprofile%/Desktop/Libraries/FastNoise2/include;Libraries/;Libraries/lodepng;Libraries/imgui;Libraries/imgui/examples;Libraries/implot;Libraries/tinyply;Libraries/objloader;Libraries/spline</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;Source/PrecompiledHeaders;Libraries/;Libraries/imgui/;Libraries/imgui/examples/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -437,8 +437,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%userprofile%/Desktop/Libraries/glew/lib/Release/x64;%userprofile%/Desktop/Libraries/glfw/lib-vc2019;%userprofile%/Desktop/Libraries/FastNoise2/lib;D:\PDAL-master\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FastNoise.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -451,7 +453,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>Source;Source/PrecompiledHeaders;%userprofile%/Desktop/Libraries/glew/include;%userprofile%/Desktop/Libraries/glm;%userprofile%/Desktop/Libraries/glfw/include;%userprofile%/Desktop/Libraries/FastNoise2/include;Libraries/;Libraries/lodepng;Libraries/imgui;Libraries/imgui/examples;Libraries/implot;Libraries/tinyply;Libraries/objloader;Libraries/spline</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source;Source/PrecompiledHeaders;Libraries/;Libraries/imgui/;Libraries/imgui/examples/</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -460,8 +462,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%userprofile%/Desktop/Libraries/glew/lib/Release/x64;%userprofile%/Desktop/Libraries/glfw/lib-vc2019;%userprofile%/Desktop/Libraries/FastNoise2/lib;D:\PDAL-master\build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FastNoise.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

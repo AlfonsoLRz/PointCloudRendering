@@ -39,11 +39,6 @@
 #include <unordered_set>
 #include <vector>
 
-// [Noise]
-
-#include "FastNoise/FastNoise.h"
-#include "FastNoise/FastNoiseMetadata.h"
-
 // [Our own classes]
 
 #include "Geometry/General/Adapter.h"
