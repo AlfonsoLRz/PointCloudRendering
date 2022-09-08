@@ -2,6 +2,7 @@
 #include "PointCloud.h"
 
 #include <filesystem>
+#include "Graphics/Application/PointCloudParameters.h"
 #include "Graphics/Application/TextureList.h"
 #include "Graphics/Core/ShaderList.h"
 #include "Graphics/Core/VAO.h"
@@ -95,7 +96,7 @@ void PointCloud::computeNormals()
 
 	// Output datasets
 	pcl::PointCloud<pcl::Normal>::Ptr cloudNormals(new pcl::PointCloud<pcl::Normal>);
-	ne.setKSearch(10);
+	ne.setKSearch(PointCloudParameters::_knn);
 	ne.compute(*cloudNormals);
 
 	for (int normalIdx = 0; normalIdx < cloudNormals->size(); ++normalIdx)

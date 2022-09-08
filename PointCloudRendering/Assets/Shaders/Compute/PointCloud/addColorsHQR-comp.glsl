@@ -36,7 +36,7 @@ void main()
 
 	vec3 n					= normalize(points[index].normal.xyz);
 	const vec3 v			= normalize(-(viewMatrix * vec4(points[index].point, 1.0f)).xyz);
-	const float vdn			= 1.0f - step(normalThreshold, dot(v, n));
+	const float vdn			= 1.0f - step(normalThreshold, abs(dot(v, n)));
 
 	ivec2 windowPosition	= ivec2((projectedPoint.xy * 0.5f + 0.5f) * windowSize);
 	int pointIndex			= int(windowPosition.y * windowSize.x + windowPosition.x);

@@ -156,6 +156,8 @@ void GUI::showPointCloudDialog()
 		ImGui::SliderScalar("Iterations", ImGuiDataType_U16, &PointCloudParameters::_reduceIterations, &minIterations, &maxIterations);
 		ImGui::Checkbox("Update camera", &_renderingParams->_updateCamera);
 		ImGui::Checkbox("Compute normals", &_renderingParams->_computeNormals);
+		ImGui::SameLine(0, 80);
+		ImGui::SliderInt("KNN", &PointCloudParameters::_knn, 5, 100);
 		ImGui::PopItemWidth();
 
 		ImGui::PushID(0);
