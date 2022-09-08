@@ -37,4 +37,5 @@ struct PointModel
 {
 	vec3	point;
 	uint	rgb;
+	vec4	normal;
 };

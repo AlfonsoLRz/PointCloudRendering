@@ -63,12 +63,12 @@ protected:
 	/**
 	*	@brief Projects the point cloud SSBOs into a window plane. 
 	*/
-	void projectPointCloud(const mat4& projectionMatrix);
+	void projectPointCloud(const mat4& viewMatrix, const mat4& projectionMatrix);
 
 	/**
 	*	@brief Projects the point cloud SSBOs into a window plane.
 	*/
-	void projectPointCloudHQR(const mat4& projectionMatrix);
+	void projectPointCloudHQR(const mat4& viewMatrix, const mat4& projectionMatrix);
 
 	/**
 	*	@brief  
@@ -129,7 +129,7 @@ public:
 	/**
 	*	@brief Triggers the rendering of a new frame. 
 	*/
-	void render(const mat4& projectionMatrix);
+	void render(const mat4& viewMatrix, const mat4& projectionMatrix);
 
 	/**
 	*	@brief

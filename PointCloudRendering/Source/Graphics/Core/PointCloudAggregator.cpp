@@ -56,7 +56,7 @@ void PointCloudAggregator::changedSize(const uint16_t width, const uint16_t heig
 	_changedWindowSize = true;
 }
 
-void PointCloudAggregator::render(const mat4& projectionMatrix)
+void PointCloudAggregator::render(const mat4& viewMatrix, const mat4& projectionMatrix)
 {
 	if (_changedWindowSize)
 	{
@@ -66,12 +66,12 @@ void PointCloudAggregator::render(const mat4& projectionMatrix)
 
 	if (PointCloudParameters::_enableHQR)
 	{
-		this->projectPointCloudHQR(projectionMatrix);
+		this->projectPointCloudHQR(viewMatrix, projectionMatrix);
 		this->writeColorsTextureHQR();
 	}
 	else
 	{
-		this->projectPointCloud(projectionMatrix);
+		this->projectPointCloud(viewMatrix, projectionMatrix);
 		this->writeColorsTexture();
 	}
 }
@@ -128,7 +128,7 @@ void PointCloudAggregator::deletePointCloudBuffers()
 	_pointCloudChunkSize.clear();
 }
 
-void PointCloudAggregator::projectPointCloud(const mat4& projectionMatrix)
+void PointCloudAggregator::projectPointCloud(const mat4& viewMatrix, const mat4& projectionMatrix)
 {
 	unsigned chunk = 0, accumSize = 0;
 	const int numGroupsImage = ComputeShader::getNumGroups(_windowSize.x * _windowSize.y);
@@ -156,7 +156,7 @@ void PointCloudAggregator::projectPointCloud(const mat4& projectionMatrix)
 	}
 }
 
-void PointCloudAggregator::projectPointCloudHQR(const mat4& projectionMatrix)
+void PointCloudAggregator::projectPointCloudHQR(const mat4& viewMatrix, const mat4& projectionMatrix)
 {
 	unsigned chunk = 0, accumSize = 0;
 	const int numGroupsImage = ComputeShader::getNumGroups(_windowSize.x * _windowSize.y);
@@ -183,8 +183,10 @@ void PointCloudAggregator::projectPointCloudHQR(const mat4& projectionMatrix)
 		// 3. Accumulate colors once the minimum depth is defined
 		_addColorsHQRShader->bindBuffers(std::vector<GLuint> { _rawDepthBufferSSBO, _color01SSBO, _color02SSBO, pointsSSBO });
 		_addColorsHQRShader->use();
-		_addColorsHQRShader->setUniform("cameraMatrix", projectionMatrix);
+		_addColorsHQRShader->setUniform("viewMatrix", viewMatrix);
+		_addColorsHQRShader->setUniform("projectionMatrix", projectionMatrix);
 		_addColorsHQRShader->setUniform("distanceThreshold", PointCloudParameters::_distanceThreshold);
+		_addColorsHQRShader->setUniform("normalThreshold", _renderingParameters->_normalThreshold);
 		_addColorsHQRShader->setUniform("numPoints", numPoints);
 		_addColorsHQRShader->setUniform("windowSize", _windowSize);
 		_addColorsHQRShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);

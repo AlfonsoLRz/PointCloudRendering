@@ -45,6 +45,8 @@ public:
 
 	// What to see		
 	float							_bvhNodesPercentage;					//!< Percentage of BVH nodes to be rendered (lower percentage means smaller nodes will be rendered)
+	bool							_computeNormals;						//!< 
+	float							_normalThreshold;						//!<
 	bool							_showBVH;								//!< Render BVH data structure
 	bool							_showTerrainRegularGrid;				//!< Shows a grid with the saturation level of a regular grid
 	bool							_showTriangleMesh;						//!< Render original scene
@@ -77,6 +79,8 @@ public:
 		_renderSemanticConcept(false),
 
 		_bvhNodesPercentage(1.0f),
+		_computeNormals(true),
+		_normalThreshold(.7f),
 		_showBVH(false),
 		_showTerrainRegularGrid(false),
 		_showTriangleMesh(true),

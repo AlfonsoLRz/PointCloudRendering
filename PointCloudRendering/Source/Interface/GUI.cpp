@@ -155,6 +155,7 @@ void GUI::showPointCloudDialog()
 		ImGui::SameLine(0, 80); ImGui::PushItemWidth(150.0f);
 		ImGui::SliderScalar("Iterations", ImGuiDataType_U16, &PointCloudParameters::_reduceIterations, &minIterations, &maxIterations);
 		ImGui::Checkbox("Update camera", &_renderingParams->_updateCamera);
+		ImGui::Checkbox("Compute normals", &_renderingParams->_computeNormals);
 		ImGui::PopItemWidth();
 
 		ImGui::PushID(0);
@@ -166,7 +167,7 @@ void GUI::showPointCloudDialog()
 
 		if (ImGui::Button("Open Point Cloud"))
 		{
-			_pointCloudScene->loadPointCloud(_pointCloudPath);
+			_pointCloudScene->loadPointCloud(_pointCloudPath, _renderingParams->_computeNormals);
 			_showPointCloudDialog = false;
 		}
 
@@ -239,6 +240,7 @@ void GUI::showRenderingSettings()
 				ImGui::ColorEdit3("Point Cloud Color", &_renderingParams->_scenePointCloudColor[0]);
 				ImGui::Checkbox("HQR Rendering Optimization", &PointCloudParameters::_enableHQR);
 				ImGui::SliderFloat("Depth Threshold", &PointCloudParameters::_distanceThreshold, 1.0f, 1.2f, "%.6f");
+				ImGui::SliderFloat("Normal Threshold", &_renderingParams->_normalThreshold, .0f, 1.0f);
 				
 				ImGui::EndTabItem();
 			}

@@ -20,6 +20,7 @@ public:
 	{
 		vec3		_point;
 		unsigned	_rgb;
+		vec4		_normal;
 
 		/**
 		*	@return RGB color packed as a single unsigned value. 
@@ -38,9 +39,10 @@ public:
 	};
 
 protected:
-	const static std::string	WRITE_POINT_CLOUD_FOLDER;			//!<
+	const static std::string	WRITE_POINT_CLOUD_FOLDER;					//!<
 
 protected:
+	bool						_computeNormals;							//!<
 	std::string					_filename;									//!<
 	bool						_useBinary;									//!<
 
@@ -53,6 +55,11 @@ protected:
 	*	@brief Computes a triangle mesh buffer composed only by indices.
 	*/
 	void computeCloudData();
+
+	/**
+	*	@brief Computes points' normals.
+	*/
+	void computeNormals();
 
 	/**
 	*	@brief Fills the content of model component with binary file data.
@@ -89,7 +96,7 @@ public:
 	/**
 	*	@brief 
 	*/
-	PointCloud(const std::string& filename, const bool useBinary, const mat4& modelMatrix = mat4(1.0f));
+	PointCloud(const std::string& filename, const bool useBinary, bool computeNormals, const mat4& modelMatrix = mat4(1.0f));
 
 	/**
 	*	@brief

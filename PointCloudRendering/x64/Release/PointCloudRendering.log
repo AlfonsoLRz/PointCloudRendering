@@ -1,103 +1,14 @@
-﻿  stdafx.cpp
-  ImGuiFileDialog.cpp
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imnodes.cpp
-  lodepng.cpp
-  tinyply.cpp
-  imgui_draw.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  implot.cpp
-  implot_demo.cpp
-  implot_items.cpp
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_tables.cpp(187,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_tables.cpp : message : vea la definición anterior de '_CRT_SECURE_NO_WARNINGS'
-  Vector2.cpp
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_widgets.cpp(32,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinición de macro
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_widgets.cpp : message : vea la definición anterior de '_CRT_SECURE_NO_WARNINGS'
-  AABB.cpp
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_tables.cpp(187): warning C4603: '_CRT_SECURE_NO_WARNINGS': no se ha definido la macro o la definición es diferente después del uso del encabezado precompilado
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_tables.cpp(187): message : Agregar la macro al encabezado precompilado en lugar de definirla aquí
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_tables.cpp(190): message : uso del encabezado precompilado
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_widgets.cpp(32): warning C4603: '_CRT_SECURE_NO_WARNINGS': no se ha definido la macro o la definición es diferente después del uso del encabezado precompilado
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_widgets.cpp(32): message : Agregar la macro al encabezado precompilado en lugar de definirla aquí
-D:\Github\PointCloudRendering\PointCloudRendering\Libraries\imgui\imgui_widgets.cpp(35): message : uso del encabezado precompilado
-  Edge3D.cpp
-  Line3D.cpp
-  Plane.cpp
-  PointCloud3D.cpp
-  Ray3D.cpp
-  Segment3D.cpp
-  Triangle3D.cpp
-  TriangleMesh.cpp
-  Vector3.cpp
-  BezierCurve.cpp
-  CatmullRom.cpp
-  Interpolation.cpp
-  LinearInterpolation.cpp
-  PointCloudScene.cpp
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Geometry\3D\TriangleMesh.cpp(210,34): warning C4477: 'fscanf_s' : la cadena de formato '%s' requiere un argumento de tipo 'unsigned int', pero el argumento variádico 2 tiene el tipo 'size_t'
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Geometry\3D\TriangleMesh.cpp(210,34): message : este argumento se utiliza como un tamaño de búfer
-  CameraManager.cpp
-  MaterialList.cpp
+﻿  PointCloudScene.cpp
   Renderer.cpp
-  SSAOScene.cpp
-  Scene.cpp
-  TextureList.cpp
-  AmbientLight.cpp
-  PointCloudAggregator.cpp
   Antialiser.cpp
-  BasicAttenuation.cpp
-  CADModel.cpp
-  Camera.cpp
-  ComputeShader.cpp
-  DirectionalLight.cpp
-  DrawAABB.cpp
-  FBO.cpp
-  FBOScreenshot.cpp
-  Group3D.cpp
-  Image.cpp
-  Light.cpp
-  Material.cpp
-  Model3D.cpp
-  OpenGLUtilities.cpp
-  OrthoProjection.cpp
-  PerspProjection.cpp
-  PointCloud.cpp
-  PixarAttenuation.cpp
-  PlanarSurface.cpp
-  PointLight.cpp
-  RangedAttenuation.cpp
-  RenderingShader.cpp
-  RimLight.cpp
-  ShaderList.cpp
-  ShaderProgram.cpp
-  ShadowMap.cpp
-  SpotLight.cpp
-  SSAOFBO.cpp
-  Texture.cpp
-  VAO.cpp
-  OBJ_Loader.cpp
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Graphics\Core\Texture.cpp(136,41): warning C4838: la conversión de 'float' en 'const unsigned char' requiere una conversión de restricción
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Graphics\Core\Texture.cpp(136,59): warning C4838: la conversión de 'float' en 'const unsigned char' requiere una conversión de restricción
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Graphics\Core\Texture.cpp(136,77): warning C4838: la conversión de 'float' en 'const unsigned char' requiere una conversión de restricción
-D:\Github\PointCloudRendering\PointCloudRendering\Source\Graphics\Core\Texture.cpp(136,95): warning C4838: la conversión de 'float' en 'const unsigned char' requiere una conversión de restricción
-  font_awesome.cpp
-  font_awesome_2.cpp
-  lato.cpp
+  PointCloudAggregator.cpp
   GUI.cpp
   InputManager.cpp
   Window.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': redefinición de macro (compilando archivo de origen Source\main.cpp)
-D:\Software\vcpkg\installed\x64-windows\include\GLFW\glfw3.h(123): message : vea la definición anterior de 'APIENTRY' (compilando archivo de origen Source\main.cpp)
      Creando biblioteca D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.lib y objeto D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exp
   Generando código
-  168 of 8958 functions ( 1.9%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    182 functions had inline decision re-evaluated but remain unchanged
+  257 of 9474 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
+    3 functions were new in current compilation
+    99 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   PointCloudRendering.vcxproj -> D:\Github\PointCloudRendering\x64\Release\PointCloudRendering.exe

@@ -30,12 +30,12 @@ PointCloudScene::~PointCloudScene()
 	delete _pointCloudAggregator;
 }
 
-bool PointCloudScene::loadPointCloud(const std::string& path)
+bool PointCloudScene::loadPointCloud(const std::string& path, bool computeNormals)
 {
 	bool nullPointCloud = _pointCloud == nullptr;
 	
 	delete _pointCloud;
-	_pointCloud = new PointCloud(path, true);
+	_pointCloud = new PointCloud(path, true, computeNormals);
 	if (!_pointCloud->load()) return false;
 	_pointCloudAggregator->setPointCloud(_pointCloud);
 
@@ -64,9 +64,10 @@ void PointCloudScene::render(const mat4& mModel, RenderingParameters* rendParams
 void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rendParams)
 {
 	Camera* activeCamera		= _cameraManager->getActiveCamera();
+	const mat4 viewMatrix		= activeCamera->getViewMatrix() * mModel;
 	const mat4 projectionMatrix = activeCamera->getViewProjMatrix() * mModel;
 
-	_pointCloudAggregator->render(projectionMatrix);
+	_pointCloudAggregator->render(viewMatrix, projectionMatrix);
 
 	_quadRenderer->use();
 	_quadRenderer->applyActiveSubroutines();

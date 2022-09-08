@@ -1,3 +1,11 @@
 ﻿
 D:\Github\PointCloudRendering\x64\Release\glew32.dll
 D:\Github\PointCloudRendering\x64\Release\glfw3.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_common.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_features.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_filters.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_sample_consensus.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_search.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_octree.dll
+D:\Github\PointCloudRendering\x64\Release\pcl_kdtree.dll
+D:\Github\PointCloudRendering\x64\Release\lz4.dll

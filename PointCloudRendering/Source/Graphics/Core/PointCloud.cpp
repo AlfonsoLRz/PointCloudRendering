@@ -5,6 +5,9 @@
 #include "Graphics/Application/TextureList.h"
 #include "Graphics/Core/ShaderList.h"
 #include "Graphics/Core/VAO.h"
+#include <pcl/features/normal_3d.h>
+#include <pcl/features/normal_3d_omp.h>
+#include <pcl/point_types.h>
 #include "tinyply/tinyply.h"
 
 // Initialization of static attributes
@@ -12,8 +15,8 @@ const std::string	PointCloud::WRITE_POINT_CLOUD_FOLDER = "PointClouds/";
 
 /// Public methods
 
-PointCloud::PointCloud(const std::string& filename, const bool useBinary, const mat4& modelMatrix) : 
-	Model3D(modelMatrix, 1), _filename(filename), _useBinary(useBinary)
+PointCloud::PointCloud(const std::string& filename, const bool useBinary, bool computeNormals, const mat4& modelMatrix) :
+	Model3D(modelMatrix, 1), _computeNormals(computeNormals), _filename(filename), _useBinary(useBinary)
 {
 }
 
@@ -41,6 +44,7 @@ bool PointCloud::load(const mat4& modelMatrix)
 
 		if (success && !binaryExists)
 		{
+			this->computeNormals();
 			this->writeToBinary(_filename + BINARY_EXTENSION);
 		}
 
@@ -69,6 +73,35 @@ void PointCloud::computeCloudData()
 	// Fill point cloud indices with iota
 	modelComp->_pointCloud.resize(_points.size());
 	std::iota(modelComp->_pointCloud.begin(), modelComp->_pointCloud.end(), 0);
+}
+
+void PointCloud::computeNormals()
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+	for (PointModel& point : _points)
+	{
+		pcl::PointXYZ pclPoint(point._point.x, point._point.y, point._point.z);
+		cloud->push_back(pclPoint);
+	}
+
+	// Create the normal estimation class, and pass the input dataset to it
+	pcl::NormalEstimationOMP<pcl::PointXYZ, pcl::Normal> ne;
+	ne.setInputCloud(cloud);
+
+	// Create an empty kdtree representation
+	pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>());
+	ne.setSearchMethod(tree);
+
+	// Output datasets
+	pcl::PointCloud<pcl::Normal>::Ptr cloudNormals(new pcl::PointCloud<pcl::Normal>);
+	ne.setKSearch(10);
+	ne.compute(*cloudNormals);
+
+	for (int normalIdx = 0; normalIdx < cloudNormals->size(); ++normalIdx)
+	{
+		_points[normalIdx]._normal = vec4(glm::normalize(vec3(cloudNormals->at(normalIdx).normal_x, cloudNormals->at(normalIdx).normal_y, cloudNormals->at(normalIdx).normal_z)), .0f);
+	}
 }
 
 bool PointCloud::loadModelFromBinaryFile()

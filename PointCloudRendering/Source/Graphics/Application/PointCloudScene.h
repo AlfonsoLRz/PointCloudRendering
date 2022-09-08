@@ -80,7 +80,7 @@ public:
 	/**
 	*	@return True if the point cloud was successfully loaded.
 	*/
-	bool loadPointCloud(const std::string& path);
+	bool loadPointCloud(const std::string& path, bool computeNormals);
 
 	/**
 	*	@brief Resize event.
