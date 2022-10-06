@@ -243,6 +243,7 @@ void GUI::showRenderingSettings()
 				ImGui::Checkbox("HQR Rendering Optimization", &PointCloudParameters::_enableHQR);
 				ImGui::SliderFloat("Depth Threshold", &PointCloudParameters::_distanceThreshold, 1.0f, 1.2f, "%.6f");
 				ImGui::SliderFloat("Normal Threshold", &_renderingParams->_normalThreshold, .0f, 1.0f);
+				ImGui::SliderFloat("Normal Strength", &_renderingParams->_normalStrength, .0f, 1.0f);
 				
 				ImGui::EndTabItem();
 			}

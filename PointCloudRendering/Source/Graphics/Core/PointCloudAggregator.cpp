@@ -187,6 +187,7 @@ void PointCloudAggregator::projectPointCloudHQR(const mat4& viewMatrix, const ma
 		_addColorsHQRShader->setUniform("projectionMatrix", projectionMatrix);
 		_addColorsHQRShader->setUniform("distanceThreshold", PointCloudParameters::_distanceThreshold);
 		_addColorsHQRShader->setUniform("normalThreshold", _renderingParameters->_normalThreshold);
+		_addColorsHQRShader->setUniform("normalStrength", _renderingParameters->_normalStrength);
 		_addColorsHQRShader->setUniform("numPoints", numPoints);
 		_addColorsHQRShader->setUniform("windowSize", _windowSize);
 		_addColorsHQRShader->execute(numGroupsPoints, 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);

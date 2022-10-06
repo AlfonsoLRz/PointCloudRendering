@@ -15,7 +15,7 @@ layout (std430, binding = 2) buffer Color02Buffer	{ uint64_t		colorBuffer02[]; }
 layout (std430, binding = 3) buffer PointBuffer		{ PointModel	points[]; };
 
 uniform float	distanceThreshold;
-uniform float	normalThreshold;
+uniform float	normalThreshold, normalStrength;
 uniform uint	numPoints;
 uniform mat4	projectionMatrix;
 uniform mat4	viewMatrix;
@@ -36,7 +36,7 @@ void main()
 
 	vec3 n					= normalize(points[index].normal.xyz);
 	const vec3 v			= normalize(-(viewMatrix * vec4(points[index].point, 1.0f)).xyz);
-	const float vdn			= 1.0f - step(normalThreshold, abs(dot(v, n)));
+	const float vdn			= clamp(1.0f - step(normalThreshold, abs(dot(v, n))) * normalStrength, .0f, 1.0f);
 
 	ivec2 windowPosition	= ivec2((projectedPoint.xy * 0.5f + 0.5f) * windowSize);
 	int pointIndex			= int(windowPosition.y * windowSize.x + windowPosition.x);
