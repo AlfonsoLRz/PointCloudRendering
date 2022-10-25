@@ -244,6 +244,8 @@ void GUI::showRenderingSettings()
 				ImGui::SliderFloat("Depth Threshold", &PointCloudParameters::_distanceThreshold, 1.0f, 1.2f, "%.6f");
 				ImGui::SliderFloat("Normal Threshold", &_renderingParams->_normalThreshold, .0f, 1.0f);
 				ImGui::SliderFloat("Normal Strength", &_renderingParams->_normalStrength, .0f, 1.0f);
+				ImGui::Checkbox("Flip Normal", &_renderingParams->_flipNormal);
+				ImGui::Checkbox("Use Normal for Alpha", &_renderingParams->_normalAlpha);
 				
 				ImGui::EndTabItem();
 			}

@@ -185,7 +185,10 @@ void PointCloudAggregator::projectPointCloudHQR(const mat4& viewMatrix, const ma
 		_addColorsHQRShader->use();
 		_addColorsHQRShader->setUniform("viewMatrix", viewMatrix);
 		_addColorsHQRShader->setUniform("projectionMatrix", projectionMatrix);
+		_addColorsHQRShader->setUniform("backgroundColor", _renderingParameters->_backgroundColor);
 		_addColorsHQRShader->setUniform("distanceThreshold", PointCloudParameters::_distanceThreshold);
+		_addColorsHQRShader->setUniform("flipNormal", float(_renderingParameters->_flipNormal));
+		_addColorsHQRShader->setUniform("normalAlpha", float(_renderingParameters->_normalAlpha));
 		_addColorsHQRShader->setUniform("normalThreshold", _renderingParameters->_normalThreshold);
 		_addColorsHQRShader->setUniform("normalStrength", _renderingParameters->_normalStrength);
 		_addColorsHQRShader->setUniform("numPoints", numPoints);

@@ -14,8 +14,9 @@ layout (std430, binding = 1) buffer Color01Buffer	{ uint64_t		colorBuffer01[]; }
 layout (std430, binding = 2) buffer Color02Buffer	{ uint64_t		colorBuffer02[]; };
 layout (std430, binding = 3) buffer PointBuffer		{ PointModel	points[]; };
 
+uniform vec3	backgroundColor;
 uniform float	distanceThreshold;
-uniform float	normalThreshold, normalStrength;
+uniform float	flipNormal, normalAlpha, normalThreshold, normalStrength;
 uniform uint	numPoints;
 uniform mat4	projectionMatrix;
 uniform mat4	viewMatrix;
@@ -36,13 +37,20 @@ void main()
 
 	vec3 n					= normalize(points[index].normal.xyz);
 	const vec3 v			= normalize(-(viewMatrix * vec4(points[index].point, 1.0f)).xyz);
-	const float vdn			= clamp(1.0f - step(normalThreshold, abs(dot(v, n))) * normalStrength, .0f, 1.0f);
+	const float vdn			= clamp(abs(1.0f * flipNormal - 1.0f - step(normalThreshold, abs(dot(v, n)))) * normalStrength, .0f, 1.0f);
 
 	ivec2 windowPosition	= ivec2((projectedPoint.xy * 0.5f + 0.5f) * windowSize);
 	int pointIndex			= int(windowPosition.y * windowSize.x + windowPosition.x);
 	float depth				= projectedPoint.w;
 	float depthInBuffer		= uintBitsToFloat(depthBuffer[pointIndex]);
-	uvec3 rgbColor			= uvec3(unpackUnorm4x8(points[index].rgb).rgb * vdn * 255.0f);
+	vec3 rgbColor_f			= unpackUnorm4x8(points[index].rgb).rgb;
+	if (normalAlpha > .5f)
+		rgbColor_f = mix(backgroundColor, rgbColor_f, vdn);
+	else
+		rgbColor_f *= vdn;
+	rgbColor_f *= 255.0f;
+
+	uvec3 rgbColor			= uvec3(rgbColor_f);
 
 	if (depth < depthInBuffer * distanceThreshold)			// Same surface
 	{
