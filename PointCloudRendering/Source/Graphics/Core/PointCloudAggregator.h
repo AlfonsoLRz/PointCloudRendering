@@ -22,6 +22,7 @@ protected:
 	std::vector<GLuint>		_pointCloudSSBO;
 	std::vector<GLuint>		_pointCloudChunkSize;
 	GLuint					_depthBufferSSBO, _rawDepthBufferSSBO, _color01SSBO, _color02SSBO;
+	GLuint					_SMSSBO;
 	std::vector<Point>		_supportBuffer;
 
 	// OpenGL Texture
@@ -32,6 +33,8 @@ protected:
 	ComputeShader*			_projectionShader, *_projectionHQRShader;
 	ComputeShader*			_resetDepthBufferShader, * _resetDepthBufferHQRShader;
 	ComputeShader*			_storeTexture, *_storeHQRTexture;
+
+	ComputeShader*			_gpuPatternShader, * _storeGpuPatternShader;
 
 	// Window
 	RenderingParameters*	_renderingParameters;
@@ -130,6 +133,11 @@ public:
 	*	@brief Triggers the rendering of a new frame. 
 	*/
 	void render(const mat4& viewMatrix, const mat4& projectionMatrix);
+
+	/**
+	*	@brief 
+	*/
+	void renderGPUPattern();
 
 	/**
 	*	@brief

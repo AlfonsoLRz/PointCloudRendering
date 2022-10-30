@@ -96,6 +96,12 @@ void ComputeShader::execute(GLuint numGroups_x, GLuint numGroups_y, GLuint numGr
 	glMemoryBarrier(GL_ALL_BARRIER_BITS);
 }
 
+void ComputeShader::execute(GLuint numGroups_x, GLuint numGroups_y, GLuint numGroups_z)
+{
+	glDispatchCompute(numGroups_x, numGroups_y, numGroups_z);
+	glMemoryBarrier(GL_ALL_BARRIER_BITS);
+}
+
 std::vector<GLint> ComputeShader::getMaxLocalSize()
 {
 	std::vector<GLint> maxLocalSize(3);

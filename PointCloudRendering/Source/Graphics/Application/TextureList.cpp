@@ -6,6 +6,7 @@
 std::unordered_map<uint16_t, std::string> TextureList::TEXTURE_PATH
 {
 	// TERRAIN_SCENE
+	{CGAppEnum::TEXTURE_INFERNO, "Assets/Textures/Gradient/Inferno.png"}
 };
 
 /// [Protected methods]

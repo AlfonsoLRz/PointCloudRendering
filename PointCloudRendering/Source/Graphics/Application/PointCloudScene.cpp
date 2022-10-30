@@ -67,7 +67,8 @@ void PointCloudScene::drawAsPoints(const mat4& mModel, RenderingParameters* rend
 	const mat4 viewMatrix		= activeCamera->getViewMatrix() * mModel;
 	const mat4 projectionMatrix = activeCamera->getViewProjMatrix() * mModel;
 
-	_pointCloudAggregator->render(viewMatrix, projectionMatrix);
+	//_pointCloudAggregator->render(viewMatrix, projectionMatrix);
+	_pointCloudAggregator->renderGPUPattern();
 
 	_quadRenderer->use();
 	_quadRenderer->applyActiveSubroutines();

@@ -910,5 +910,11 @@
     <None Include="Assets\Shaders\Compute\PointCloud\transferPoints-comp.glsl">
       <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
     </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\renderGPUPattern-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
+    <None Include="Assets\Shaders\Compute\PointCloud\storeGPUPattern-comp.glsl">
+      <Filter>Archivos de recursos\Shaders\Compute\PointCloud</Filter>
+    </None>
   </ItemGroup>
 </Project>

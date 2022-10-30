@@ -290,7 +290,7 @@ void InputManager::resizeEvent(GLFWwindow* window, int width, int height)
 void InputManager::windowRefresh(GLFWwindow* window)
 {
 	Renderer::getInstance()->render();
-	GUI::getInstance()->render();
+	//GUI::getInstance()->render();
 
 	glfwSwapBuffers(window);
 }

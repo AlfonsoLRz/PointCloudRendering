@@ -52,6 +52,11 @@ public:
 	void execute(GLuint numGroups_x, GLuint numGroups_y, GLuint numGroups_z, GLuint workGroup_x, GLuint workGroup_y, GLuint workGroup_z);
 
 	/**
+	*	@brief 
+	*/
+	void execute(GLuint numGroups_x, GLuint numGroups_y, GLuint numGroups_z);
+
+	/**
 	*	@return Maximum size a work group can get.
 	*/
 	static std::vector<GLint> getMaxLocalSize();

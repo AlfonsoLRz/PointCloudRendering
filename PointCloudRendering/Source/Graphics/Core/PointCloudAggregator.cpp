@@ -3,6 +3,7 @@
 
 #include "Graphics/Application/PointCloudParameters.h"
 #include "Graphics/Application/Renderer.h"
+#include "Graphics/Application/TextureList.h"
 #include "Graphics/Core/OpenGLUtilities.h"
 #include "Graphics/Core/ShaderList.h"
 #include "Interface/Window.h"
@@ -10,7 +11,7 @@
 // [Public methods]
 
 PointCloudAggregator::PointCloudAggregator() :
-	_pointCloud(nullptr), _textureID(-1), _depthBufferSSBO(-1)
+	_pointCloud(nullptr), _textureID(-1), _depthBufferSSBO(-1), _gpuPatternShader(nullptr)
 {
 	ShaderList* shaderList	= ShaderList::getInstance();
 	Window* window			= Window::getInstance();
@@ -26,12 +27,16 @@ PointCloudAggregator::PointCloudAggregator() :
 	_storeHQRTexture		= shaderList->getComputeShader(RendEnum::STORE_TEXTURE_HQR_SHADER);
 	_supportBuffer.resize(this->getAllowedNumberOfPoints());
 
+	_gpuPatternShader		= shaderList->getComputeShader(RendEnum::RENDER_GPU_PATTERN);
+	_storeGpuPatternShader	= shaderList->getComputeShader(RendEnum::STORE_GPU_PATTERN);
+
 	_windowSize				= window->getSize();
 
 	_color01SSBO			= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 	_color02SSBO			= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 	_depthBufferSSBO		= ComputeShader::setWriteBuffer(uint64_t(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 	_rawDepthBufferSSBO		= ComputeShader::setWriteBuffer(GLuint(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
+	_SMSSBO					= ComputeShader::setWriteBuffer(float(), _windowSize.x * _windowSize.y, GL_DYNAMIC_DRAW);
 
 	// Window texture
 	glGenTextures(1, &_textureID);
@@ -47,6 +52,7 @@ PointCloudAggregator::~PointCloudAggregator()
 	glDeleteBuffers(1, &_color02SSBO);
 	glDeleteBuffers(1, &_depthBufferSSBO);
 	glDeleteBuffers(1, &_rawDepthBufferSSBO);
+	glDeleteBuffers(1, &_SMSSBO);
 	glDeleteTextures(1, &_textureID);
 }
 
@@ -74,6 +80,40 @@ void PointCloudAggregator::render(const mat4& viewMatrix, const mat4& projection
 		this->projectPointCloud(viewMatrix, projectionMatrix);
 		this->writeColorsTexture();
 	}
+}
+
+void PointCloudAggregator::renderGPUPattern()
+{
+	//float* p_smIds = ComputeShader::readData(_SMSSBO, float());
+	//std::vector<float> smIds1 = std::vector<float>(p_smIds, p_smIds + _windowSize.x * _windowSize.y);
+
+	//_gpuPatternShader->bindBuffers(std::vector<GLuint> { _SMSSBO });
+	//_gpuPatternShader->use();
+	//_gpuPatternShader->setUniform("windowSize", _windowSize);
+	//_gpuPatternShader->execute(ComputeShader::getNumGroups(_windowSize.x * _windowSize.y), 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+
+	//p_smIds = ComputeShader::readData(_SMSSBO, float());
+	//std::vector<float> smIds2 = std::vector<float>(p_smIds, p_smIds + _windowSize.x * _windowSize.y);
+
+	//unsigned count = 0;
+	//for (int i = 0; i < _windowSize.x * _windowSize.y; ++i)
+	//{
+	//	if (glm::epsilonEqual(smIds1[i], smIds2[i], glm::epsilon<float>()))
+	//	{
+	//		count++;
+	//	}
+	//}
+
+	//std::cout << count << std::endl;
+
+	//_storeGpuPatternShader->bindBuffers(std::vector<GLuint> { _SMSSBO });
+	_storeGpuPatternShader->use();
+	this->bindTexture();
+	TextureList::getInstance()->getTexture(CGAppEnum::TEXTURE_INFERNO)->applyTexture(_storeGpuPatternShader, 0, "textureImage");
+	//_storeGpuPatternShader->setUniform("maxSM", 14.0f);
+	_storeGpuPatternShader->setUniform("windowSize", _windowSize);
+	_storeGpuPatternShader->execute(ComputeShader::getNumGroups(_windowSize.x * _windowSize.y), 1, 1, ComputeShader::getMaxGroupSize(), 1, 1);
+	_storeGpuPatternShader->execute(20, 20, 1);
 }
 
 void PointCloudAggregator::setPointCloud(PointCloud* pointCloud)
