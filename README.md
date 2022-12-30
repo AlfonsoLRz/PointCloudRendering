@@ -1,5 +1,5 @@
 # Large Point Cloud Rendering   ![c++](https://img.shields.io/github/languages/top/AlfonsoLRz/PointCloudRendering) ![numpy](https://img.shields.io/badge/imgui-1.82-green.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg)
-This project is intended for fast rendering of large point clouds in OpenGL through compute shaders, providing an interface for visualizing them with a high rate of frames per second (FPS). This work is mainly based on the research of Markus Schütz, though further operations are here enabled.
+This work is intended to provide a fast rendering of large point clouds in OpenGL using compute shaders. It is built over an interface based on ImGui for easing the opening and visualization of large point clouds with a high rate of frames per second (FPS). This work is implemented from the research of Markus Schütz.
 
 <p align="center">
   <img src="Assets/Images/AbstractComposition.png" width="800px" alt="PointCloudRenderingIntro">
@@ -10,13 +10,13 @@ ___
 
 * The provided project opens large point clouds limited by the memory size of the GPU. The maximum allowed size of a Shader Storage Buffer Objects (SSBO) is far behind the GPU capabilities, thus the point clouds are partitioned into several chunks. Nevertheless, point clouds of several GBs may not be rendered in this application.
 
-* Beyond opening large point clouds, the proposed work mentioned in the references allows us to improve the visualization of a point cloud through the last extensions of compute shaders. See the image below to compare the enhancement with respect to GL_POINTS rendering mode.
+* Beyond opening large point clouds, the base work of Markus Schütz allows improving the visualization of point clouds through the last extensions of compute shaders. See the image below to compare the enhancement with respect to GL_POINTS rendering mode.
 
 <p align="center">
   <img src="Assets/Images/HQRComparison.png" width="800px" alt="HQRComparison">
 </p>
 
-* As an alternative for large point clouds that cannot be completely loaded into the GPU, we provide a tool for reducing the size of a point cloud. For that purpose, points are sorted along a _z_-curve to compress neighbourhoods into a single point.
+* As an alternative for large point clouds that cannot be completely loaded into the GPU, we provide a tool for reducing the size of a point cloud. For that purpose, points are sorted along a _z_-curve to narrow surrounding points into a single one.
 
 <p align="center">
   <img src="Assets/Images/ReductionComparison.png" width="800px" alt="ReductionComparison">
